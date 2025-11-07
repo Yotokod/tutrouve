@@ -1,0 +1,154 @@
+<table class="dataTablesExample">
+    <thead>
+    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('advertisement-delete')): ?>
+        <th class="no-sort">
+            <div class="mark-all-checkbox">
+                <input type="checkbox" class="all-checkbox">
+            </div>
+        </th>
+    <?php endif; ?>
+    <th><?php echo e(__('ID')); ?></th>
+    <th><?php echo e(__('Title')); ?></th>
+    <th><?php echo e(__('Type')); ?></th>
+    <th><?php echo e(__('Size')); ?></th>
+    <th><?php echo e(__('Image')); ?></th>
+    <th><?php echo e(__('Click')); ?></th>
+    <th><?php echo e(__('Impression')); ?></th>
+    <th><?php echo e(__('Status')); ?></th>
+    <th><?php echo e(__('Action')); ?></th>
+    </thead>
+    <tbody>
+    <?php if(!empty($all_advertisements) && $all_advertisements->count()): ?>
+        <?php $__currentLoopData = $all_advertisements; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <tr>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('advertisement-delete')): ?>
+                    <td>
+                        <?php if (isset($component)) { $__componentOriginal2f3acf431e4ef3aaad9c59423cc34c19 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal2f3acf431e4ef3aaad9c59423cc34c19 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.bulk-action.bulk-delete-checkbox','data' => ['id' => $data->id]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('bulk-action.bulk-delete-checkbox'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['id' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($data->id)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal2f3acf431e4ef3aaad9c59423cc34c19)): ?>
+<?php $attributes = $__attributesOriginal2f3acf431e4ef3aaad9c59423cc34c19; ?>
+<?php unset($__attributesOriginal2f3acf431e4ef3aaad9c59423cc34c19); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal2f3acf431e4ef3aaad9c59423cc34c19)): ?>
+<?php $component = $__componentOriginal2f3acf431e4ef3aaad9c59423cc34c19; ?>
+<?php unset($__componentOriginal2f3acf431e4ef3aaad9c59423cc34c19); ?>
+<?php endif; ?>
+                    </td>
+                <?php endif; ?>
+                <td><?php echo e($data->id); ?></td>
+                <td><?php echo e($data->title); ?></td>
+                <td><?php echo e(__(str_replace('_',' ',$data->type))); ?></td>
+                <td><?php echo e($data->size); ?></td>
+                <td>
+                    <?php
+                        $add_img = get_attachment_image_by_id($data->image,null,true);
+                    ?>
+                    <?php if(!empty($add_img)): ?>
+                        <div class="attachment-preview">
+                            <div class="thumbnail">
+                                <div class="centered">
+                                    <img class="avatar user-thumb" src="<?php echo e($add_img['img_url']); ?>" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </td>
+                <td><?php echo e($data->click); ?></td>
+                <td><?php echo e($data->impression); ?></td>
+                <td>
+                    <?php if($data->status==1): ?>
+                        <span class="alert alert-success"><?php echo e(__('Active')); ?></span>
+                    <?php else: ?>
+                        <span class="alert alert-danger"><?php echo e(__('Inactive')); ?></span>
+                    <?php endif; ?>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('advertisement-status-change')): ?>
+                         <span><?php if (isset($component)) { $__componentOriginal086f7010becd4d657cdb856682d3d79f = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal086f7010becd4d657cdb856682d3d79f = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.status.status-change','data' => ['url' => route('admin.advertisement.status',$data->id)]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('status.status-change'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['url' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.advertisement.status',$data->id))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal086f7010becd4d657cdb856682d3d79f)): ?>
+<?php $attributes = $__attributesOriginal086f7010becd4d657cdb856682d3d79f; ?>
+<?php unset($__attributesOriginal086f7010becd4d657cdb856682d3d79f); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal086f7010becd4d657cdb856682d3d79f)): ?>
+<?php $component = $__componentOriginal086f7010becd4d657cdb856682d3d79f; ?>
+<?php unset($__componentOriginal086f7010becd4d657cdb856682d3d79f); ?>
+<?php endif; ?></span>
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('advertisement-delete')): ?>
+                        <?php if (isset($component)) { $__componentOriginal7973b0ce98592c79f9209abd6e46a09b = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal7973b0ce98592c79f9209abd6e46a09b = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.popup.delete-popup','data' => ['url' => route('admin.advertisement.delete',$data->id)]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('popup.delete-popup'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['url' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.advertisement.delete',$data->id))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal7973b0ce98592c79f9209abd6e46a09b)): ?>
+<?php $attributes = $__attributesOriginal7973b0ce98592c79f9209abd6e46a09b; ?>
+<?php unset($__attributesOriginal7973b0ce98592c79f9209abd6e46a09b); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal7973b0ce98592c79f9209abd6e46a09b)): ?>
+<?php $component = $__componentOriginal7973b0ce98592c79f9209abd6e46a09b; ?>
+<?php unset($__componentOriginal7973b0ce98592c79f9209abd6e46a09b); ?>
+<?php endif; ?>
+                    <?php endif; ?>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('advertisement-edit')): ?>
+                        <?php if (isset($component)) { $__componentOriginalafff3ec7080c879e2a19819877781dfa = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginalafff3ec7080c879e2a19819877781dfa = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.btn.edit','data' => ['url' => route('admin.advertisement.edit',$data->id)]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
+<?php $component->withName('btn.edit'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag && $constructor = (new ReflectionClass(Illuminate\View\AnonymousComponent::class))->getConstructor()): ?>
+<?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['url' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(route('admin.advertisement.edit',$data->id))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginalafff3ec7080c879e2a19819877781dfa)): ?>
+<?php $attributes = $__attributesOriginalafff3ec7080c879e2a19819877781dfa; ?>
+<?php unset($__attributesOriginalafff3ec7080c879e2a19819877781dfa); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalafff3ec7080c879e2a19819877781dfa)): ?>
+<?php $component = $__componentOriginalafff3ec7080c879e2a19819877781dfa; ?>
+<?php unset($__componentOriginalafff3ec7080c879e2a19819877781dfa); ?>
+<?php endif; ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    <?php else: ?>
+        <span><?php echo e(__('Advertisement No Found')); ?></span>
+    <?php endif; ?>
+    </tbody>
+</table>
+<div class="custom_pagination mt-5 d-flex justify-content-end">
+    <?php echo e($all_advertisements->links()); ?>
+
+</div>
+<?php /**PATH /home/tutreqhl/public_html/core/resources/views/backend/pages/advertisement/search-advertisement.blade.php ENDPATH**/ ?>
