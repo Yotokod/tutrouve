@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Application de la police Saira globalement */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+div,
+button {
+    font-family: "Saira", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: inherit;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+/* Fond blanc pour le body et les cards */
+body {
+    background-color: #ffffff !important;
+}
+
+.card,
+.singleFeatureCard,
+.singleBlog,
+.popularServiceCard,
+.singleCity {
+    background-color: #ffffff !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animations pour les cards */
+.card:hover,
+.singleFeatureCard:hover,
+.singleBlog:hover,
+.popularServiceCard:hover,
+.singleCity:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(31, 62, 57, 0.1);
+}
+
+/* Animations pour les boutons */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(31, 62, 57, 0.2);
+}
+
+/* Animations pour les liens de navigation */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #1F3E39;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover:after {
+    width: 100%;
+}
+
+/* Style personnalisé pour le scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1F3E39;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #93BD93;
+}
