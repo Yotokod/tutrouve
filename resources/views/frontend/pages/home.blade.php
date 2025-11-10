@@ -115,33 +115,34 @@
         overflow: hidden;
     }
 
-    .tutslider,
-    .tutslider > div {
-        height: 500px;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
     .tutslider {
+        height: 500px;
         position: relative;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
         overflow: hidden;
     }
 
-    .tutslider > div {
+    .tutslider-slide {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
+        height: 500px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         opacity: 0;
         transition: opacity 0.8s ease-in-out;
         z-index: 1;
     }
 
-    .tutslider > div:first-child {
+    .tutslider-slide:first-child {
         opacity: 1;
         z-index: 3;
+    }
+
+    .tutslider-slide[onclick] {
+        cursor: pointer;
     }
 
     /* Navigation Arrows with Glassmorphism */
@@ -241,7 +242,7 @@
     }
 
     /* Textbox with Frozen Glass Effect */
-    .tutslider > div .tutslider-textbox {
+    .tutslider-slide .tutslider-textbox {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -257,7 +258,7 @@
         z-index: 5;
     }
 
-    .tutslider > div .tutslider-textbox h3 {
+    .tutslider-slide .tutslider-textbox h3 {
         font-size: 2rem;
         font-weight: 700;
         color: #ffffff;
@@ -267,7 +268,7 @@
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
-    .tutslider > div .tutslider-textbox h3::after {
+    .tutslider-slide .tutslider-textbox h3::after {
         content: '';
         position: absolute;
         bottom: 0;
@@ -279,7 +280,7 @@
         box-shadow: 0 2px 8px rgba(147, 189, 147, 0.5);
     }
 
-    .tutslider > div .tutslider-textbox p {
+    .tutslider-slide .tutslider-textbox p {
         font-size: 1rem;
         color: rgba(255, 255, 255, 0.95);
         margin: 16px 0 0;
@@ -288,7 +289,7 @@
     }
 
     /* Clickable slides indicator */
-    .tutslider > div[onclick]::after {
+    .tutslider-slide[onclick]::after {
         content: '➜';
         position: absolute;
         bottom: 30px;
@@ -310,27 +311,27 @@
     /* Responsive Slider */
     @media (max-width: 992px) {
         .tutslider,
-        .tutslider > div {
+        .tutslider-slide {
             height: 400px;
         }
 
-        .tutslider > div .tutslider-textbox {
+        .tutslider-slide .tutslider-textbox {
             padding: 30px 35px;
             max-width: 500px;
         }
 
-        .tutslider > div .tutslider-textbox h3 {
+        .tutslider-slide .tutslider-textbox h3 {
             font-size: 1.75rem;
         }
     }
 
     @media (max-width: 768px) {
         .tutslider,
-        .tutslider > div {
+        .tutslider-slide {
             height: 350px;
         }
 
-        .tutslider > div .tutslider-textbox {
+        .tutslider-slide .tutslider-textbox {
             padding: 25px 30px;
             max-width: 85%;
         }
@@ -348,20 +349,20 @@
 
     @media (max-width: 576px) {
         .tutslider,
-        .tutslider > div {
+        .tutslider-slide {
             height: 300px;
         }
 
-        .tutslider > div .tutslider-textbox {
+        .tutslider-slide .tutslider-textbox {
             padding: 20px 25px;
             max-width: 90%;
         }
 
-        .tutslider > div .tutslider-textbox h3 {
+        .tutslider-slide .tutslider-textbox h3 {
             font-size: 1.25rem;
         }
 
-        .tutslider > div .tutslider-textbox p {
+        .tutslider-slide .tutslider-textbox p {
             font-size: 0.85rem;
         }
 
@@ -464,7 +465,7 @@
                 this.slider = document.getElementById('tutslider3');
                 if (!this.slider) return;
 
-                this.slides = Array.from(this.slider.querySelectorAll('div[style*="background-image"]'));
+                this.slides = Array.from(this.slider.querySelectorAll('.tutslider-slide'));
                 if (this.slides.length === 0) return;
 
                 this.setupDots();

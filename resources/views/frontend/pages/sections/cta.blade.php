@@ -1,9 +1,9 @@
 <!-- Call To Action Section with Enhanced Neo-Glassmorphism and Stats -->
-<div class="cta-section" style="padding: 100px 0; background: linear-gradient(135deg, #1a1f3a 0%, #0f172a 100%); position: relative; overflow: hidden;">
+<div class="cta-section" style="padding: 100px 0; background: linear-gradient(135deg, #f0f7f0 0%, #e8f4e9 100%); position: relative; overflow: hidden;">
     <!-- Background animated elements -->
-    <div style="position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(147, 189, 147, 0.2) 0%, transparent 70%); border-radius: 50%; animation: float 8s ease-in-out infinite;"></div>
-    <div style="position: absolute; bottom: -50%; left: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(93, 189, 213, 0.15) 0%, transparent 70%); border-radius: 50%; animation: float 10s ease-in-out infinite 2s;"></div>
-    <div style="position: absolute; top: 20%; right: 10%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255, 184, 0, 0.1) 0%, transparent 70%); border-radius: 50%; animation: float 6s ease-in-out infinite 1s;"></div>
+    <div style="position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(147, 189, 147, 0.15) 0%, transparent 70%); border-radius: 50%; animation: float 8s ease-in-out infinite;"></div>
+    <div style="position: absolute; bottom: -50%; left: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(147, 189, 147, 0.1) 0%, transparent 70%); border-radius: 50%; animation: float 10s ease-in-out infinite 2s;"></div>
+    <div style="position: absolute; top: 20%; right: 10%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(147, 189, 147, 0.08) 0%, transparent 70%); border-radius: 50%; animation: float 6s ease-in-out infinite 1s;"></div>
 
     <div class="container-1440">
         <!-- Stats Row -->
@@ -11,21 +11,21 @@
             <div class="col-lg-10 mx-auto">
                 <div class="row g-4 text-center" style="position: relative; z-index: 2;">
                     <div class="col-md-4">
-                        <div style="padding: 30px 20px; background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(10px); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease;">
+                        <div style="padding: 30px 20px; background: #ffffff; backdrop-filter: blur(10px); border-radius: 16px; border: 1px solid rgba(147, 189, 147, 0.2); transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);">
                             <div style="font-size: 2.5rem; font-weight: 700; color: #93bd93; margin-bottom: 8px;">{{ $topListings->count() ?? 0 }}+</div>
-                            <div style="color: #b0b0b0; font-size: 14px;">{{ __('Annonces actives') }}</div>
+                            <div style="color: #666666; font-size: 14px;">{{ __('Annonces actives') }}</div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div style="padding: 30px 20px; background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(10px); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease;">
+                        <div style="padding: 30px 20px; background: #ffffff; backdrop-filter: blur(10px); border-radius: 16px; border: 1px solid rgba(147, 189, 147, 0.2); transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);">
                             <div style="font-size: 2.5rem; font-weight: 700; color: #93bd93; margin-bottom: 8px;">{{ $categories->count() ?? 0 }}+</div>
-                            <div style="color: #b0b0b0; font-size: 14px;">{{ __('Catégories') }}</div>
+                            <div style="color: #666666; font-size: 14px;">{{ __('Catégories') }}</div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div style="padding: 30px 20px; background: rgba(255, 255, 255, 0.06); backdrop-filter: blur(10px); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease;">
+                        <div style="padding: 30px 20px; background: #ffffff; backdrop-filter: blur(10px); border-radius: 16px; border: 1px solid rgba(147, 189, 147, 0.2); transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);">
                             <div style="font-size: 2.5rem; font-weight: 700; color: #93bd93; margin-bottom: 8px;">1000+</div>
-                            <div style="color: #b0b0b0; font-size: 14px;">{{ __('Utilisateurs actifs') }}</div>
+                            <div style="color: #666666; font-size: 14px;">{{ __('Utilisateurs actifs') }}</div>
                         </div>
                     </div>
                 </div>
@@ -36,27 +36,26 @@
         <div class="row">
             <div class="col-lg-10 mx-auto">
                 <div style="
-                    background: linear-gradient(135deg, rgba(147, 189, 147, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
-                    backdrop-filter: blur(20px);
+                    background: #ffffff;
                     border-radius: 24px;
                     padding: 60px 40px;
-                    border: 1px solid rgba(147, 189, 147, 0.3);
+                    border: 2px solid rgba(147, 189, 147, 0.2);
                     text-align: center;
                     position: relative;
                     z-index: 1;
-                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
                     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                     animation: fadeInScale 0.8s ease-out;
-                " onmouseover="this.style.transform='translateY(-8px) scale(1.01)'; this.style.borderColor='rgba(147, 189, 147, 0.5)'; this.style.boxShadow='0 20px 60px rgba(147, 189, 147, 0.3)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(147, 189, 147, 0.3)'; this.style.boxShadow='0 8px 32px rgba(0, 0, 0, 0.2)'">
+                " onmouseover="this.style.transform='translateY(-8px) scale(1.01)'; this.style.borderColor='rgba(147, 189, 147, 0.5)'; this.style.boxShadow='0 20px 60px rgba(147, 189, 147, 0.2)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.borderColor='rgba(147, 189, 147, 0.2)'; this.style.boxShadow='0 8px 32px rgba(0, 0, 0, 0.1)'">
                     
                     <!-- Icon with Glow Effect -->
-                    <div style="font-size: 72px; margin-bottom: 24px; color: #93bd93; filter: drop-shadow(0 4px 12px rgba(147, 189, 147, 0.5)); animation: pulse-glow 2s ease-in-out infinite;">
+                    <div style="font-size: 72px; margin-bottom: 24px; color: #93bd93; filter: drop-shadow(0 4px 12px rgba(147, 189, 147, 0.3)); animation: pulse-glow 2s ease-in-out infinite;">
                         <i class="las la-rocket"></i>
                     </div>
 
                     <!-- Title -->
                     <h2 style="
-                        color: #ffffff;
+                        color: #1F3E39;
                         font-size: 2.8rem;
                         font-weight: 700;
                         margin-bottom: 20px;
@@ -68,7 +67,7 @@
 
                     <!-- Subtitle -->
                     <p style="
-                        color: #d0d0d0;
+                        color: #555555;
                         font-size: 1.15rem;
                         margin-bottom: 40px;
                         line-height: 1.7;

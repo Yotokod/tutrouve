@@ -7,7 +7,7 @@
 <div class="tutslider-wrapper">
     <div class="tutslider" id="tutslider3">
         @foreach($sliders as $slide)
-        <div style="background-image:url({{ asset('sliders/' . $slide->image) }}); cursor:pointer;" 
+        <div class="tutslider-slide" style="background-image:url({{ asset('sliders/' . $slide->image) }});" 
              @if($slide->link) onclick="window.location.href='{{ $slide->link }}'" @endif>
             @if($slide->titre || $slide->description) 
             <span class="tutslider-textbox">

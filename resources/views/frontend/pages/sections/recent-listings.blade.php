@@ -1,12 +1,12 @@
 <!-- Recent Listings Section -->
-<div class="recent-listings-section" style="padding: 80px 0; background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%);">
+<div class="recent-listings-section" style="padding: 80px 0; background: #ffffff;">
     <div class="container-1440">
         <!-- Section Header -->
         <div class="row mb-5">
             <div class="col-12">
                 <div class="section-header d-flex justify-content-between align-items-center flex-wrap gap-3">
                     <div class="section-title-wrapper">
-                        <h2 class="section-title-modern" style="color: #ffffff; margin-bottom: 12px; font-size: 2.5rem; font-weight: 700; letter-spacing: -0.5px;">
+                        <h2 class="section-title-modern" style="color: #1F3E39; margin-bottom: 12px; font-size: 2.5rem; font-weight: 700; letter-spacing: -0.5px;">
                             {{ __('Annonces récentes') }}
                         </h2>
                         <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #93bd93, #a8cca8); border-radius: 2px;"></div>
