@@ -20,7 +20,7 @@
 @section('content')
 <style>
     .page-header-modern {
-        background: linear-gradient(135deg, #1a1f3a 0%, #0f172a 100%);
+        background: linear-gradient(135deg, #f8faf9 0%, #e8f4e9 100%);
         padding: 60px 0 40px;
         margin-bottom: 40px;
         position: relative;
@@ -68,13 +68,13 @@
         margin: 0;
         font-size: 1.1rem;
         font-weight: 600;
-        color: #ffffff;
+        color: #1F3E39;
     }
 
     .child-category-card p {
         margin: 4px 0 0 0;
         font-size: 14px;
-        color: #b0b0b0;
+        color: #666666;
     }
 
     .child-category-icon {
@@ -91,30 +91,30 @@
     }
 </style>
 
-<div class="subcategory-wise-listing-modern" style="padding: 0; background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%); min-height: 100vh;">
+<div class="subcategory-wise-listing-modern" style="padding: 0; background: #ffffff; min-height: 100vh;">
     <!-- Page Header -->
     <div class="page-header-modern">
         <div class="container-1440" style="position: relative; z-index: 2;">
             <!-- Breadcrumb Modern -->
             <nav style="margin-bottom: 24px;">
-                <ol style="display: flex; align-items: center; gap: 8px; list-style: none; padding: 0; margin: 0; font-size: 14px; color: #b0b0b0; flex-wrap: wrap;">
+                <ol style="display: flex; align-items: center; gap: 8px; list-style: none; padding: 0; margin: 0; font-size: 14px; color: #666666; flex-wrap: wrap;">
                     <li><a href="{{ route('homepage') }}" style="color: #93bd93; text-decoration: none;">{{ __('Accueil') }}</a></li>
                     <li><i class="las la-angle-right"></i></li>
                     <li><a href="{{ route('frontend.show.listing.by.category', $subcategory->category?->slug ?? 'x') }}" style="color: #93bd93; text-decoration: none;">{{ $subcategory->category?->name }}</a></li>
                     <li><i class="las la-angle-right"></i></li>
-                    <li style="color: #ffffff;">{{ $subcategory->name }}</li>
+                    <li style="color: #1F3E39;">{{ $subcategory->name }}</li>
                 </ol>
             </nav>
 
             <!-- Subcategory Title -->
-            <h1 style="color: #ffffff; font-size: 2.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -1px;">
+            <h1 style="color: #1F3E39; font-size: 2.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -1px;">
                 {{ $subcategory->name }}
             </h1>
             <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #93bd93, #a8cca8); border-radius: 2px; margin-bottom: 20px;"></div>
 
             <!-- Subcategory Description -->
             @if(!is_null($subcategory->description))
-                <div style="max-width: 800px; color: #d0d0d0; font-size: 16px; line-height: 1.7;">
+                <div style="max-width: 800px; color: #555555; font-size: 16px; line-height: 1.7;">
                     {!! $subcategory->description !!}
                 </div>
             @endif
@@ -128,10 +128,10 @@
         @if($child_category_under_category->count() > 0)
             <div style="margin-bottom: 60px;">
                 <div style="margin-bottom: 32px;">
-                    <h2 style="color: #ffffff; font-size: 2rem; font-weight: 700; margin-bottom: 12px;">
+                    <h2 style="color: #1F3E39; font-size: 2rem; font-weight: 700; margin-bottom: 12px;">
                         {{ __('Catégories spécifiques') }}
                     </h2>
-                    <p style="color: #b0b0b0; font-size: 16px;">
+                    <p style="color: #666666; font-size: 16px;">
                         {{ __('Affinez votre recherche par catégorie spécifique') }}
                     </p>
                 </div>
@@ -182,10 +182,10 @@
         <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
                 <div>
-                    <h2 style="color: #ffffff; font-size: 2rem; font-weight: 700; margin-bottom: 8px;">
+                    <h2 style="color: #1F3E39; font-size: 2rem; font-weight: 700; margin-bottom: 8px;">
                         {{ __('Annonces disponibles') }}
                     </h2>
-                    <p style="color: #b0b0b0; font-size: 16px; margin: 0;">
+                    <p style="color: #666666; font-size: 16px; margin: 0;">
                         {{ __(':count annonces trouvées', ['count' => $all_listings->total() ?? 0]) }}
                     </p>
                 </div>

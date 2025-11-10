@@ -19,12 +19,18 @@
 @endsection
 @section('content')
 <style>
+    /* White Theme Design */
+    body {
+        background: #ffffff;
+    }
+
     .page-header-modern {
-        background: linear-gradient(135deg, #1a1f3a 0%, #0f172a 100%);
+        background: linear-gradient(135deg, #f8faf9 0%, #e8f4e9 100%);
         padding: 60px 0 40px;
         margin-bottom: 40px;
         position: relative;
         overflow: hidden;
+        border-bottom: 1px solid rgba(147, 189, 147, 0.2);
     }
 
     .page-header-modern::before {
@@ -45,9 +51,8 @@
     }
 
     .subcategory-card {
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: #ffffff;
+        border: 1px solid rgba(31, 62, 57, 0.1);
         border-radius: 12px;
         padding: 20px;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -55,26 +60,27 @@
         display: flex;
         align-items: center;
         gap: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .subcategory-card:hover {
         transform: translateY(-4px);
-        border-color: rgba(147, 189, 147, 0.5);
-        background: rgba(147, 189, 147, 0.1);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        border-color: rgba(147, 189, 147, 0.4);
+        background: #f8fdf8;
+        box-shadow: 0 12px 32px rgba(147, 189, 147, 0.15);
     }
 
     .subcategory-card h4 {
         margin: 0;
         font-size: 1.1rem;
         font-weight: 600;
-        color: #ffffff;
+        color: #1F3E39;
     }
 
     .subcategory-card p {
         margin: 4px 0 0 0;
         font-size: 14px;
-        color: #b0b0b0;
+        color: #666666;
     }
 
     .subcategory-icon {
@@ -91,28 +97,28 @@
     }
 </style>
 
-<div class="category-wise-listing-modern" style="padding: 0; background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 100%); min-height: 100vh;">
+<div class="category-wise-listing-modern" style="padding: 0; background: #ffffff; min-height: 100vh;">
     <!-- Page Header -->
     <div class="page-header-modern">
         <div class="container-1440" style="position: relative; z-index: 2;">
             <!-- Breadcrumb Modern -->
             <nav style="margin-bottom: 24px;">
-                <ol style="display: flex; align-items: center; gap: 8px; list-style: none; padding: 0; margin: 0; font-size: 14px; color: #b0b0b0;">
+                <ol style="display: flex; align-items: center; gap: 8px; list-style: none; padding: 0; margin: 0; font-size: 14px; color: #666666;">
                     <li><a href="{{ route('homepage') }}" style="color: #93bd93; text-decoration: none;">{{ __('Accueil') }}</a></li>
                     <li><i class="las la-angle-right"></i></li>
-                    <li style="color: #ffffff;">{{ $category->name }}</li>
+                    <li style="color: #1F3E39; font-weight: 600;">{{ $category->name }}</li>
                 </ol>
             </nav>
 
             <!-- Category Title -->
-            <h1 style="color: #ffffff; font-size: 2.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -1px;">
+            <h1 style="color: #1F3E39; font-size: 2.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -1px;">
                 {{ $category->name }}
             </h1>
             <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #93bd93, #a8cca8); border-radius: 2px; margin-bottom: 20px;"></div>
 
             <!-- Category Description -->
             @if(!is_null($category->description))
-                <div style="max-width: 800px; color: #d0d0d0; font-size: 16px; line-height: 1.7;">
+                <div style="max-width: 800px; color: #555555; font-size: 16px; line-height: 1.7;">
                     {!! $category->description !!}
                 </div>
             @endif
@@ -126,10 +132,10 @@
         @if($subcategory_under_category->count() > 0)
             <div style="margin-bottom: 60px;">
                 <div style="margin-bottom: 32px;">
-                    <h2 style="color: #ffffff; font-size: 2rem; font-weight: 700; margin-bottom: 12px;">
+                    <h2 style="color: #1F3E39; font-size: 2rem; font-weight: 700; margin-bottom: 12px;">
                         {{ __('Sous-catégories') }}
                     </h2>
-                    <p style="color: #b0b0b0; font-size: 16px;">
+                    <p style="color: #666666; font-size: 16px;">
                         {{ __('Explorez les différentes sous-catégories disponibles') }}
                     </p>
                 </div>
@@ -180,10 +186,10 @@
         <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
                 <div>
-                    <h2 style="color: #ffffff; font-size: 2rem; font-weight: 700; margin-bottom: 8px;">
+                    <h2 style="color: #1F3E39; font-size: 2rem; font-weight: 700; margin-bottom: 8px;">
                         {{ __('Annonces disponibles') }}
                     </h2>
-                    <p style="color: #b0b0b0; font-size: 16px; margin: 0;">
+                    <p style="color: #666666; font-size: 16px; margin: 0;">
                         {{ __(':count annonces trouvées', ['count' => $all_listings->total() ?? 0]) }}
                     </p>
                 </div>

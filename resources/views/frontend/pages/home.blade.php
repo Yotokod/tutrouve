@@ -105,6 +105,271 @@
             transform: translateY(0);
         }
     }
+
+    /* ===============================================
+       TUTROUVE SLIDER STYLES - Original Design
+       =============================================== */
+    .tutslider-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .tutslider,
+    .tutslider > div {
+        height: 500px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .tutslider {
+        position: relative;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+    }
+
+    .tutslider > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+        z-index: 1;
+    }
+
+    .tutslider > div:first-child {
+        opacity: 1;
+        z-index: 3;
+    }
+
+    /* Navigation Arrows with Glassmorphism */
+    .tutslider > i {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+    }
+
+    .tutslider > i.tutslider-left {
+        left: 20px;
+    }
+
+    .tutslider > i.tutslider-right {
+        right: 20px;
+    }
+
+    .tutslider:hover > i {
+        opacity: 1;
+    }
+
+    .tutslider:hover > i.tutslider-left {
+        left: 20px;
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .tutslider:hover > i.tutslider-right {
+        right: 20px;
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .tutslider > i svg {
+        width: 20px;
+        height: 20px;
+        fill: #ffffff;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    .tutslider > i:hover {
+        background: rgba(255, 255, 255, 0.35);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    /* Dots Indicators */
+    .tutslider > ul {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        list-style: none;
+        padding: 12px 20px;
+        margin: 0;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        border-radius: 30px;
+        z-index: 10;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .tutslider > ul > li {
+        width: 12px;
+        height: 12px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .tutslider > ul > li:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: scale(1.2);
+    }
+
+    .tutslider > ul > li.tutslider-active {
+        width: 32px;
+        border-radius: 16px;
+        background: #93bd93;
+        box-shadow: 0 4px 16px rgba(147, 189, 147, 0.5);
+    }
+
+    /* Textbox with Frozen Glass Effect */
+    .tutslider > div .tutslider-textbox {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(8px);
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        border-radius: 24px;
+        padding: 40px 50px;
+        max-width: 600px;
+        text-align: center;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        z-index: 5;
+    }
+
+    .tutslider > div .tutslider-textbox h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0;
+        padding-bottom: 16px;
+        position: relative;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .tutslider > div .tutslider-textbox h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: #93bd93;
+        border-radius: 3px;
+        box-shadow: 0 2px 8px rgba(147, 189, 147, 0.5);
+    }
+
+    .tutslider > div .tutslider-textbox p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.95);
+        margin: 16px 0 0;
+        line-height: 1.6;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Clickable slides indicator */
+    .tutslider > div[onclick]::after {
+        content: '➜';
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: rgba(147, 189, 147, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 24px;
+        z-index: 6;
+        box-shadow: 0 8px 24px rgba(147, 189, 147, 0.4);
+        transition: all 0.3s ease;
+    }
+
+    /* Responsive Slider */
+    @media (max-width: 992px) {
+        .tutslider,
+        .tutslider > div {
+            height: 400px;
+        }
+
+        .tutslider > div .tutslider-textbox {
+            padding: 30px 35px;
+            max-width: 500px;
+        }
+
+        .tutslider > div .tutslider-textbox h3 {
+            font-size: 1.75rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .tutslider,
+        .tutslider > div {
+            height: 350px;
+        }
+
+        .tutslider > div .tutslider-textbox {
+            padding: 25px 30px;
+            max-width: 85%;
+        }
+
+        .tutslider > i {
+            width: 45px;
+            height: 45px;
+        }
+
+        .tutslider > ul {
+            bottom: 20px;
+            padding: 10px 16px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .tutslider,
+        .tutslider > div {
+            height: 300px;
+        }
+
+        .tutslider > div .tutslider-textbox {
+            padding: 20px 25px;
+            max-width: 90%;
+        }
+
+        .tutslider > div .tutslider-textbox h3 {
+            font-size: 1.25rem;
+        }
+
+        .tutslider > div .tutslider-textbox p {
+            font-size: 0.85rem;
+        }
+
+        .tutslider > i {
+            width: 40px;
+            height: 40px;
+        }
+    }
 </style>
 @endpush
 
@@ -181,5 +446,144 @@
         section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         observer.observe(section);
     });
+
+    // ===============================================
+    // TUTROUVE SLIDER SCRIPT - Original Design
+    // ===============================================
+    (function() {
+        'use strict';
+        
+        const TutrouveSlider = {
+            slider: null,
+            slides: [],
+            currentIndex: 0,
+            interval: null,
+            autoPlayDelay: 5000,
+
+            init: function() {
+                this.slider = document.getElementById('tutslider3');
+                if (!this.slider) return;
+
+                this.slides = Array.from(this.slider.querySelectorAll('div[style*="background-image"]'));
+                if (this.slides.length === 0) return;
+
+                this.setupDots();
+                this.setupArrows();
+                this.setupAutoPlay();
+                this.setupKeyboard();
+                this.showSlide(0);
+            },
+
+            setupDots: function() {
+                if (this.slides.length <= 1) return;
+
+                const ul = document.createElement('ul');
+                this.slides.forEach((_, index) => {
+                    const li = document.createElement('li');
+                    if (index === 0) li.classList.add('tutslider-active');
+                    li.addEventListener('click', () => this.goToSlide(index));
+                    li.setAttribute('tabindex', '0');
+                    li.setAttribute('role', 'button');
+                    li.setAttribute('aria-label', `Aller au slide ${index + 1}`);
+                    ul.appendChild(li);
+                });
+                this.slider.appendChild(ul);
+            },
+
+            setupArrows: function() {
+                const leftArrow = this.slider.querySelector('.tutslider-left');
+                const rightArrow = this.slider.querySelector('.tutslider-right');
+
+                if (leftArrow) {
+                    leftArrow.addEventListener('click', () => this.prevSlide());
+                    leftArrow.setAttribute('tabindex', '0');
+                    leftArrow.setAttribute('role', 'button');
+                    leftArrow.setAttribute('aria-label', 'Slide précédent');
+                }
+
+                if (rightArrow) {
+                    rightArrow.addEventListener('click', () => this.nextSlide());
+                    rightArrow.setAttribute('tabindex', '0');
+                    rightArrow.setAttribute('role', 'button');
+                    rightArrow.setAttribute('aria-label', 'Slide suivant');
+                }
+            },
+
+            setupAutoPlay: function() {
+                this.startAutoPlay();
+                
+                this.slider.addEventListener('mouseenter', () => this.stopAutoPlay());
+                this.slider.addEventListener('mouseleave', () => this.startAutoPlay());
+            },
+
+            setupKeyboard: function() {
+                const controls = this.slider.querySelectorAll('.tutslider-arrows, ul > li');
+                controls.forEach(control => {
+                    control.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            control.click();
+                        }
+                    });
+                });
+            },
+
+            showSlide: function(index) {
+                this.slides.forEach((slide, i) => {
+                    slide.style.opacity = i === index ? '1' : '0';
+                    slide.style.zIndex = i === index ? '3' : '1';
+                });
+
+                const dots = this.slider.querySelectorAll('ul > li');
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.add('tutslider-active');
+                    } else {
+                        dot.classList.remove('tutslider-active');
+                    }
+                });
+
+                this.currentIndex = index;
+            },
+
+            goToSlide: function(index) {
+                this.showSlide(index);
+                this.resetAutoPlay();
+            },
+
+            nextSlide: function() {
+                const nextIndex = (this.currentIndex + 1) % this.slides.length;
+                this.goToSlide(nextIndex);
+            },
+
+            prevSlide: function() {
+                const prevIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+                this.goToSlide(prevIndex);
+            },
+
+            startAutoPlay: function() {
+                if (this.slides.length <= 1) return;
+                this.interval = setInterval(() => this.nextSlide(), this.autoPlayDelay);
+            },
+
+            stopAutoPlay: function() {
+                clearInterval(this.interval);
+            },
+
+            resetAutoPlay: function() {
+                this.stopAutoPlay();
+                this.startAutoPlay();
+            }
+        };
+
+        // Init slider when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                TutrouveSlider.init();
+            });
+        } else {
+            TutrouveSlider.init();
+        }
+    })();
 </script>
 @endpush
