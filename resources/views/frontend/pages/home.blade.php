@@ -183,4 +183,3 @@
     });
 </script>
 @endpush
-@endsection
