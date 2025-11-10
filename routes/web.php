@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\User\GuestMediaUploadController;
 use App\Http\Controllers\Frontend\User\ListingController;
 use App\Http\Controllers\Frontend\User\ListingFavoriteController;
 use App\Http\Controllers\Frontend\UserReviewController;
+use App\Http\Controllers\Frontend\FrontendPagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -98,9 +99,16 @@ Route::group(['middleware' => ['globalVariable', 'maintains_mode','setlang']], f
     // frontend custom form builders
     Route::post('submit-custom-form', [\App\Http\Controllers\Frontend\FrontendFormController::class, 'custom_form_builder_message'])->name('frontend.form.builder.custom.submit');
 
-    //dynamic single page
+    // Static Pages Routes
+    Route::controller(FrontendPagesController::class)->group(function(){
+        Route::get('/', 'home')->name('homepage');
+        Route::get('/about', 'about')->name('about');
+        Route::get('/services', 'services')->name('services');
+        Route::get('/contact', 'contact')->name('contact');
+    });
+
+    // Dynamic single page (kept for backward compatibility)
     Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function(){
-        Route::get('/','home_page')->name('homepage');
         Route::get('/{slug}', 'dynamic_single_page')->name('frontend.dynamic.page');
     });
     // listing favorite
