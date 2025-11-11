@@ -1,7 +1,7 @@
 <!-- Hero Section with Slider Background & Search Form -->
 @php
     $sliders = App\Models\Slider::all();
-    $categories = \Modules\CountryManage\app\Models\Category::where('status', 1)->get();
+    $categories = \App\Models\Backend\Category::where('status', 1)->get();
 @endphp
 
 <section class="hero-section">
