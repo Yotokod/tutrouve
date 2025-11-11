@@ -82,8 +82,20 @@
         </div>
     </div>
     
-    <!-- Slider Navigation (Optional) -->
+    <!-- Slider Navigation Arrows -->
     @if($sliders->count() > 1)
+    <button class="hero-nav hero-prev" aria-label="Previous slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M15 18l-6-6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    <button class="hero-nav hero-next" aria-label="Next slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M9 18l6-6-6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    
+    <!-- Slider Dots -->
     <div class="hero-dots">
         @foreach($sliders as $index => $slide)
         <button class="hero-dot {{ $index === 0 ? 'active' : '' }}" data-slide="{{ $index }}"></button>
@@ -145,7 +157,6 @@
 }
 
 /* Frozen Glass Overlay */
-
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -153,8 +164,8 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, 
-        rgba(255, 167, 38, 0.75) 0%, 
-        rgba(251, 140, 0, 0.65) 100%);
+        rgba(31, 62, 57, 0.75) 0%, 
+        rgba(31, 62, 57, 0.65) 100%);
     backdrop-filter: blur(2px);
     z-index: 2;
 }
@@ -284,7 +295,7 @@ select.form-control {
 /* Search Button */
 .btn-search {
     padding: 14px 40px;
-    background: linear-gradient(135deg, #FFA726 0%, #FB8C00 100%);
+    background: linear-gradient(135deg, #1F3E39 0%, #2d5850 100%);
     color: #ffffff;
     border: none;
     border-radius: 40px;
@@ -293,17 +304,67 @@ select.form-control {
     cursor: pointer;
     transition: all 0.3s ease;
     white-space: nowrap;
-    box-shadow: 0 4px 15px rgba(251, 140, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(31, 62, 57, 0.3);
 }
 
 .btn-search:hover {
-    background: linear-gradient(135deg, #FB8C00 0%, #F57C00 100%);
+    background: linear-gradient(135deg, #2d5850 0%, #1F3E39 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(251, 140, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(31, 62, 57, 0.4);
 }
 
 .btn-search:active {
     transform: translateY(0);
+}
+
+/* Navigation Arrows */
+.hero-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(31, 62, 57, 0.8);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 12;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.hero-section:hover .hero-nav {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hero-prev {
+    left: 20px;
+}
+
+.hero-next {
+    right: 20px;
+}
+
+.hero-nav:hover {
+    background: rgba(31, 62, 57, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 20px rgba(31, 62, 57, 0.4);
+}
+
+.hero-nav:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.hero-nav svg {
+    width: 24px;
+    height: 24px;
 }
 
 /* Slider Dots */
@@ -486,6 +547,26 @@ document.addEventListener('DOMContentLoaded', function() {
             startAutoplay();
         });
     });
+    
+    // Arrow navigation
+    const prevBtn = document.querySelector('.hero-prev');
+    const nextBtn = document.querySelector('.hero-next');
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+            stopAutoplay();
+            startAutoplay();
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+            stopAutoplay();
+            startAutoplay();
+        });
+    }
     
     // Pause autoplay when user interacts with form
     const searchForm = document.querySelector('.search-form');
