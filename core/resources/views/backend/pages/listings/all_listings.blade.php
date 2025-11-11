@@ -2,21 +2,30 @@
 @section('site-title')
     {{__('All User Listings')}}
 @endsection
+@section('style')
+    <link rel="stylesheet" href="{{asset('frontend/css/listings-crud-modern.css')}}">
+@endsection
 @section('content')
     <div class="row g-4 mt-0">
         <div class="col-xl-12 col-lg-12">
-            <div class="dashboard__card bg__white padding-20 radius-10">
+            <div class="dashboard__card bg__white padding-20 radius-10 listing-form-modern">
                 <div class="dashboard__inner__header">
                     <div class="dashboard__inner__header__flex">
                         <div class="dashboard__inner__header__left">
-                            <h4 class="dashboard__inner__header__title">{{ __('All User Listings') }}</h4>
+                            <h4 class="dashboard__inner__header__title section-title">
+                                <i class="las la-list-alt"></i>
+                                {{ __('Toutes les annonces utilisateur') }}
+                            </h4>
                             @can('user-listing-bulk-delete')
                             <x-bulk-action.bulk-action/>
                             @endcan
                        </div>
                         <div class="dashboard__inner__header__right">
-                            <div class="d-flex text-right w-100 mt-3">
-                                <input class="form__control notice_string_search" name="string_search" id="string_search" placeholder="{{ __('Search') }}">
+                            <div class="listings-filter-bar" style="margin: 0;">
+                                <div class="filter-input-modern">
+                                    <i class="las la-search"></i>
+                                    <input class="form__control notice_string_search" name="string_search" id="string_search" placeholder="{{ __('Rechercher une annonce...') }}">
+                                </div>
                             </div>
                        </div>
                    </div>

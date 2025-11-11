@@ -6,6 +6,7 @@
     <x-media.css/>
     <x-summernote.css/>
     <link rel="stylesheet" href="{{asset('assets/backend/css/bootstrap-tagsinput.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/listings-crud-modern.css')}}">
     <style>
         .btn-wrapper a{
             margin-right: 8px;
@@ -29,6 +30,42 @@
                             <div class="main-body">
                                 <x-frontend.user.responsive-icon/>
                                 <div class="relevant-ads all-listings box-shadow1">
+                                    
+                                    <!-- Stats Cards -->
+                                    <div class="listings-stats-row">
+                                        <div class="stat-card-modern">
+                                            <div class="stat-icon">
+                                                <i class="las la-list-alt"></i>
+                                            </div>
+                                            <div class="stat-value">{{ $listings->total() }}</div>
+                                            <div class="stat-label">{{ __('Total Annonces') }}</div>
+                                        </div>
+                                        
+                                        <div class="stat-card-modern">
+                                            <div class="stat-icon">
+                                                <i class="las la-check-circle"></i>
+                                            </div>
+                                            <div class="stat-value">{{ $listings->where('status', 1)->count() }}</div>
+                                            <div class="stat-label">{{ __('Approuvées') }}</div>
+                                        </div>
+                                        
+                                        <div class="stat-card-modern">
+                                            <div class="stat-icon">
+                                                <i class="las la-clock"></i>
+                                            </div>
+                                            <div class="stat-value">{{ $listings->where('status', 0)->count() }}</div>
+                                            <div class="stat-label">{{ __('En attente') }}</div>
+                                        </div>
+                                        
+                                        <div class="stat-card-modern">
+                                            <div class="stat-icon">
+                                                <i class="las la-eye"></i>
+                                            </div>
+                                            <div class="stat-value">{{ $listings->sum('view') }}</div>
+                                            <div class="stat-label">{{ __('Vues totales') }}</div>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="add-wraper">
                                         @if($listings->count() > 0)
                                         @foreach($listings as $listing)
@@ -79,33 +116,22 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="right-buttons">
-                                                <span class="text">
-                                                    @if($listing->is_published == 1)
-                                                        {{ __('Published') }}
-                                                    @else
-                                                        {{ __('Unpublished') }}
-                                                    @endif
-                                                </span>
-                                                    <div class="publish-btn">
-                                                      <x-status.frontend-listing-published-change :title="__('Change Status')" :url="route('user.listing.published.status', $listing->id)" :published="$listing->is_published"/>
-                                                    </div>
-                                                <div class="setting-btn-wraper">
-                                                    <a href="javascript:void(0)" class="setting-btn">
-                                                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                                                    </a>
-                                                    <div class="settings-wraper">
-                                                        <a href="{{ route('user.edit.listing', $listing->id) }}">
-                                                            <i class="las la-pen-alt"></i>
-                                                            {{ __('Edit Ad') }}
-                                                        </a>
-                                                        <a href="{{route('frontend.listing.details',$listing->slug ?? 'x')}}" target="_blank">
-                                                            <i class="las la-eye"></i>
-                                                            {{ __('View Ad') }}
-                                                        </a>
-                                                        <x-popup.frontend-listing-delete-popup :url="route('user.delete.listing',$listing->id)"/>
-                                                    </div>
-                                                </div>
+                                            <div class="single-add-ctrl">
+                                                <a href="{{ route('user.edit.listing', $listing->id) }}" class="edit-btn-modern">
+                                                    <i class="las la-edit"></i>
+                                                    {{ __('Modifier') }}
+                                                </a>
+                                                <a href="{{route('frontend.listing.details',$listing->slug ?? 'x')}}" target="_blank" class="edit-btn-modern" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
+                                                    <i class="las la-eye"></i>
+                                                    {{ __('Voir') }}
+                                                </a>
+                                                <button onclick="confirmDelete('{{route('user.delete.listing',$listing->id)}}')" class="delete-btn-modern">
+                                                    <i class="las la-trash"></i>
+                                                    {{ __('Supprimer') }}
+                                                </button>
+                                            </div>
+                                            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(31, 62, 57, 0.1);">
+                                                <x-status.frontend-listing-published-change :title="__('Publier/Dépublier')" :url="route('user.listing.published.status', $listing->id)" :published="$listing->is_published"/>
                                             </div>
                                         </div>
                                        <div class="devider"></div>
@@ -157,6 +183,24 @@
                         }
                     });
                 });
+                
+                // Modern delete confirmation
+                window.confirmDelete = function(url) {
+                    Swal.fire({
+                        title: '{{__("Êtes-vous sûr ?")}}',
+                        text: '{{__("Cette action est irréversible !")}}',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#ef4444',
+                        cancelButtonColor: '#64748B',
+                        confirmButtonText: "{{ __('Oui, supprimer !') }}",
+                        cancelButtonText: "{{ __('Annuler') }}"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = url;
+                        }
+                    });
+                };
 
                 // change status
                 $(document).on('click','.swal_status_change',function(e){

@@ -296,25 +296,34 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 100%;
 }
 
 .price-input {
     flex: 1;
+    min-width: 0;
     padding: 10px 12px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     font-size: 0.9rem;
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
+    background: #ffffff;
 }
 
 .price-input:focus {
     border-color: #1F3E39;
+    box-shadow: 0 0 0 3px rgba(31, 62, 57, 0.1);
+}
+
+.price-input::placeholder {
+    color: #999999;
 }
 
 .price-separator {
     color: #999999;
     font-weight: 600;
+    flex-shrink: 0;
 }
 
 /* Filter Buttons */
@@ -620,6 +629,11 @@
     .filters-sidebar {
         width: 100%;
         position: static;
+        margin-bottom: 30px;
+    }
+
+    .filter-card {
+        border-radius: 16px;
     }
 
     .listings-grid-filtered {
@@ -636,17 +650,62 @@
         flex-direction: column;
         gap: 12px;
         align-items: stretch;
+        padding: 16px;
+    }
+
+    .sort-select {
+        width: 100%;
     }
 
     .listings-grid-filtered {
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
         gap: 20px;
     }
+
+    /* Optimiser price range sur mobile */
+    .price-range-inputs {
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+
+    .price-input {
+        padding: 12px 10px;
+        font-size: 0.85rem;
+        min-width: 80px;
+    }
+
+    .price-separator {
+        font-size: 0.9rem;
+    }
+
+    /* Améliorer les boutons sur mobile */
+    .btn-apply-filters,
+    .btn-reset-filters {
+        padding: 14px;
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 576px) {
     .listings-grid-filtered {
         grid-template-columns: 1fr;
+    }
+
+    .price-range-inputs {
+        gap: 6px;
+    }
+
+    .price-input {
+        padding: 10px 8px;
+        font-size: 0.8rem;
+    }
+
+    .filter-group {
+        padding: 16px 0;
+    }
+
+    .filter-label {
+        font-size: 0.9rem;
     }
 }
 </style>

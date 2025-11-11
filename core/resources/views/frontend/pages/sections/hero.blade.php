@@ -188,21 +188,22 @@
 .hero-title {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
-    color: #2C3E50;
+    color: #ffffff;
     margin: 0 0 16px 0;
     line-height: 1.2;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 /* Hero Subtitle */
 .hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.125rem);
-    color: rgba(44, 62, 80, 0.8);
+    color: rgba(255, 255, 255, 0.95);
     margin: 0 0 40px 0;
     line-height: 1.6;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 /* Search Form Container */

@@ -443,9 +443,37 @@ Route::middleware(['setlang'])->group(function () {
 });
 
 Route::resource('sliders', SliderController::class);
-  Route::get('/transactions', [TransactionController::class,'index'])->name('admin.transaction.index')->permission('site-identity-settings');
 
-  Route::post('/transaction/edit-admin', [TransactionController::class,'edit_admin'])->name('admin.transaction.edit_admin')->permission('site-identity-settings');
+// Transactions Escrow Admin Routes
+Route::prefix('escrow')->name('escrow.')->group(function () {
+    Route::get('/transactions', [\App\Http\Controllers\Backend\AdminEscrowController::class, 'index'])
+        ->name('transactions')
+        ->permission('site-identity-settings');
+    
+    Route::post('/approve/{id}', [\App\Http\Controllers\Backend\AdminEscrowController::class, 'approve'])
+        ->name('approve')
+        ->permission('site-identity-settings');
+    
+    Route::post('/reject/{id}', [\App\Http\Controllers\Backend\AdminEscrowController::class, 'reject'])
+        ->name('reject')
+        ->permission('site-identity-settings');
+    
+    Route::post('/cancel/{id}', [\App\Http\Controllers\Backend\AdminEscrowController::class, 'cancel'])
+        ->name('cancel')
+        ->permission('site-identity-settings');
+    
+    Route::get('/show/{id}', [\App\Http\Controllers\Backend\AdminEscrowController::class, 'show'])
+        ->name('show')
+        ->permission('site-identity-settings');
+    
+    Route::post('/update-notes/{id}', [\App\Http\Controllers\Backend\AdminEscrowController::class, 'updateNotes'])
+        ->name('update.notes')
+        ->permission('site-identity-settings');
+});
+
+// Anciennes routes transactions (compatibilité)
+Route::get('/transactions', [TransactionController::class,'index'])->name('admin.transaction.index')->permission('site-identity-settings');
+Route::post('/transaction/edit-admin', [TransactionController::class,'edit_admin'])->name('admin.transaction.edit_admin')->permission('site-identity-settings');
     // media upload routes end
     Route::post('/media-upload/all', [MediaUploadController::class,'allUploadMediaFile'])->name('admin.upload.media.file.all');
     Route::post('/media-upload', [MediaUploadController::class,'uploadMediaFile'])->name('admin.upload.media.file');

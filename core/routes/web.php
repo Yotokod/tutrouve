@@ -159,7 +159,13 @@ Route::group(['middleware' => ['globalVariable', 'maintains_mode','setlang']], f
         });
     });
 });
-  Route::post('/transaction/add', [TransactionController::class,'add'])->name('user.transaction.add');
-  Route::post('/transaction/all-user', [TransactionController::class,'all_user'])->name('user.transaction.all');
-  Route::post('/transaction/edit-sender', [TransactionController::class,'edit_sender'])->name('user.transaction.edit_sender');
-  Route::post('/transaction/edit-receiver', [TransactionController::class,'edit_receiver'])->name('user.transaction.edit_receiver');
+// Routes Transactions Escrow Utilisateur
+Route::middleware('auth')->prefix('transaction')->name('user.transaction.')->group(function () {
+    Route::post('/add', [TransactionController::class, 'add'])->name('add');
+    Route::get('/all-user', [TransactionController::class, 'all_user'])->name('all');
+    Route::get('/show/{id}', [TransactionController::class, 'show'])->name('show');
+    Route::post('/edit-sender', [TransactionController::class, 'edit_sender'])->name('edit_sender');
+    Route::post('/edit-receiver', [TransactionController::class, 'edit_receiver'])->name('edit_receiver');
+    Route::post('/confirm-receipt/{id}', [TransactionController::class, 'confirm_receipt'])->name('confirm_receipt');
+    Route::post('/confirm-shipping/{id}', [TransactionController::class, 'confirm_shipping'])->name('confirm_shipping');
+});
