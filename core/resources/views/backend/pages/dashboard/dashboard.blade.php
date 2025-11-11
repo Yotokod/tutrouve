@@ -80,7 +80,7 @@
                                                                     <div class="table_customer__contents">
                                                                         <h6 class="table_customer__title">{{ $user->fullname ?? '' }}</h6>
                                                                         <p class="table_customer__para mt-1">{{ $user->email ?? '' }}</p>
-                                                                        <p class="table_customer__para mt-1">{{ $user->phone ?? '' }}</p> ?? '
+                                                                        <p class="table_customer__para mt-1">{{ $user->phone ?? '' }}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -126,9 +126,9 @@
                                                                         @endif
                                                                     </div>
                                                                     <div class="table_customer__contents">
-                                                                        <h6 class="table_customer__title">{{ $user->fullname ?? '' }}</h6>
-                                                                        <p class="table_customer__para mt-1">{{ $user->email ?? '' }}</p>
-                                                                        <p class="table_customer__para mt-1">{{ $user->phone ?? '' }}</p>
+                                                                        <h6 class="table_customer__title">{{ optional($listing->user)->fullname ?? __('N/A') }}</h6>
+                                                                        <p class="table_customer__para mt-1">{{ optional($listing->user)->email ?? '' }}</p>
+                                                                        <p class="table_customer__para mt-1">{{ optional($listing->user)->phone ?? '' }}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>

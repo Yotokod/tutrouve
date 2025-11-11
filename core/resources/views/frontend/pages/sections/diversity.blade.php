@@ -86,7 +86,7 @@
 
         <!-- Call to Action Button -->
         <div style="text-align: center; margin-top: 60px; position: relative; z-index: 1;">
-            <a href="{{ route('frontend.listings.all') }}" 
+            <a href="{{ route('frontend.home.search') }}" 
                class="btn-explore-diversity" 
                style="display: inline-flex; 
                       align-items: center; 

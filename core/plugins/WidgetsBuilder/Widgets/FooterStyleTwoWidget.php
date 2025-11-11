@@ -67,19 +67,20 @@ class FooterStyleTwoWidget extends WidgetBase
     public function frontend_render()
     {
         $settings = $this->get_settings();
-        $image_id = SanitizeInput::esc_html($settings['site_logo']);
-        $image_url = SanitizeInput::esc_html($settings['site_logo']);
-        $image = render_image_markup_by_attachment_id($image_id,null,'full');
-
-        $logo = render_image_markup_by_attachment_id($image_url);
+        // Utiliser le logo white depuis les paramètres généraux
+        $logo = render_image_markup_by_attachment_id(get_static_option('site_white_logo'));
         $logo_url = url('/');
-        $facebook_url = $widget_saved_values['facebook_url'] ?? '';
-        $twitter_url = $widget_saved_values['twitter_url'] ?? '';
-        $instagram_url = $widget_saved_values['instagram_url'] ?? '';
-        $google_url = $widget_saved_values['google_url'] ?? '';
+        $facebook_url = $settings['facebook_url'] ?? '';
+        $twitter_url = $settings['twitter_url'] ?? '';
+        $instagram_url = $settings['instagram_url'] ?? '';
+        $google_url = $settings['google_url'] ?? '';
 
 
         $output = $this->widget_before(); //render widget before content
+
+        $email_title = $settings['email_title_' . get_user_lang()] ?? '';
+        $email = $settings['email_' . get_user_lang()] ?? '';
+        $follow_title = $settings['follow_title_' . get_user_lang()] ?? '';
 
         return <<<HTML
      <footer class="footer-area index-04">
@@ -89,16 +90,16 @@ class FooterStyleTwoWidget extends WidgetBase
                     <div class="col-sm-12 col-md-12 col-lg-4">
                         <div class="footer-widget">
                             <div class="content">
-                                <h4 class="title">Email</h4>
-                                <p class="email">contact@mail.com</p>
+                                <h4 class="title">{$email_title}</h4>
+                                <p class="email">{$email}</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-4">
                         <div class="footer-widget">
                             <div class="logo-wrapper bodr">
-                                <a href="index.html" class="logo">
-                                    <img src="assets/img/logo/Logo-04.png" alt="logo">
+                                <a href="{$logo_url}" class="logo">
+                                    {$logo}
                                 </a>
                             </div>
                         </div>
@@ -106,25 +107,25 @@ class FooterStyleTwoWidget extends WidgetBase
                     <div class="col-sm-12 col-md-12 col-lg-4">
                         <div class="footer-widget">
                             <div class="content">
-                                <h4 class="title">Follow me</h4>
+                                <h4 class="title">{$follow_title}</h4>
                                 <ul class="social-link-list">
                                     <li class="list-item">
-                                        <a href="#">
+                                        <a href="{$facebook_url}">
                                             <i class="lab la-facebook-f icon-s"></i>
                                         </a>
                                     </li>
                                     <li class="list-item">
-                                        <a href="#">
+                                        <a href="{$twitter_url}">
                                             <i class="lab la-instagram icon-s"></i>
                                         </a>
                                     </li>
                                     <li class="list-item">
-                                        <a href="#">
+                                        <a href="{$instagram_url}">
                                             <i class="lab la-linkedin-in icon-s"></i>
                                         </a>
                                     </li>
                                     <li class="list-item">
-                                        <a href="#">
+                                        <a href="{$google_url}">
                                             <i class="lab la-pinterest-p icon-s"></i>
                                         </a>
                                     </li>

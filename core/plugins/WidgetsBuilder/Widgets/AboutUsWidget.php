@@ -42,7 +42,8 @@ class AboutUsWidget extends WidgetBase
         $settings = $this->get_settings();
         $description = purify_html($settings['description']);
         $route = route('homepage');
-        $logo = render_image_markup_by_attachment_id($settings['image']);
+        // Utiliser le logo white depuis les paramètres généraux
+        $logo = render_image_markup_by_attachment_id(get_static_option('site_white_logo'));
 
    return <<<HTML
    <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
