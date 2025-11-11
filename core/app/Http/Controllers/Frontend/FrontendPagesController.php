@@ -29,11 +29,11 @@ class FrontendPagesController extends Controller
                 ->take(8)
                 ->get();
 
-            // Get recent listings
+            // Get recent listings (12 pour la grille de filtres)
             $recentListings = Listing::where('status', 1)
                 ->where('is_published', 1)
                 ->orderBy('created_at', 'desc')
-                ->take(8)
+                ->take(12)
                 ->get();
 
             return view('frontend.pages.home', compact('topListings', 'categories', 'recentListings'));

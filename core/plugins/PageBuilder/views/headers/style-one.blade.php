@@ -531,7 +531,7 @@
 <div class="tutslider-wrapper">
     <div class="tutslider" id="tutslider3">
         @foreach($slider as $slide)
-        <div style="background-image:url(https://www.tutrouve.com/core/public/sliders/{{ $slide->image }}); cursor:pointer;" 
+        <div style="background-image:url({{ asset('sliders/' . $slide->image) }}); cursor:pointer;" 
              @if($slide->link) onclick="window.location.href='{{ $slide->link }}'" @endif>
             @if($slide->titre || $slide->description) 
             <span class="tutslider-textbox">

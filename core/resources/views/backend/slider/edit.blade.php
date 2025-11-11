@@ -19,7 +19,7 @@
         <div class="mb-3">
             <label for="image" class="form-label">Image actuelle :</label>
             <div>
-                  <img src="https://www.tutrouve.com/core/public/sliders/{{ $slider->image }}" alt="Slider Image" class="img-thumbnail" style="width: 150px; height: auto;">
+                  <img src="{{ asset('sliders/' . $slider->image) }}" alt="Slider Image" class="img-thumbnail" style="width: 150px; height: auto;">
             </div>
             <label for="image" class="form-label">Changer l'image :</label>
             <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">

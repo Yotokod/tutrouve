@@ -6,10 +6,10 @@
             <div class="col-12">
                 <div class="section-header d-flex justify-content-between align-items-center flex-wrap gap-3">
                     <div class="section-title-wrapper">
-                        <h2 class="section-title-modern" style="color: #1F3E39; margin-bottom: 12px; font-size: 2.5rem; font-weight: 700; letter-spacing: -0.5px;">
+                        <h2 class="section-title-modern" style="color: #1F3E39; margin-bottom: 8px; font-size: 2rem; font-weight: 700; letter-spacing: -0.5px;">
                             {{ __('Annonces récentes') }}
                         </h2>
-                        <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #93bd93, #a8cca8); border-radius: 2px;"></div>
+                        <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #1F3E39, #2d5850); border-radius: 2px;"></div>
                     </div>
                 </div>
             </div>

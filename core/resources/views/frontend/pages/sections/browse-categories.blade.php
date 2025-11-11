@@ -85,16 +85,16 @@
 }
 
 .section-header-categories .section-title {
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 800;
     color: #1F3E39;
-    margin: 0 0 16px 0;
+    margin: 0 0 8px 0;
     line-height: 1.2;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
 }
 
 .section-header-categories .section-subtitle {
-    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
     color: #666666;
     margin: 0;
     line-height: 1.6;
@@ -365,23 +365,4 @@
         height: 16px;
     }
 }
-</style>
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-            transform: translateY(-20px) rotate(2deg);
-        }
-    }
-
-    .category-card-glass {
-        animation: slideInUp 0.6s ease-out;
-    }
-
-    @media (max-width: 768px) {
-        .browse-categories-section {
-            padding: 50px 0 !important;
-        }
-    }
 </style>

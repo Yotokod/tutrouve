@@ -385,8 +385,8 @@
     <!-- Categories Browse Section -->
     @include('frontend.pages.sections.browse-categories')
 
-    <!-- Recent Listings Section -->
-    @include('frontend.pages.sections.recent-listings')
+    <!-- Filtered Listings Section -->
+    @include('frontend.pages.sections.filtered-listings')
 
     <!-- Call To Action Section avec statistiques -->
     @include('frontend.pages.sections.cta')

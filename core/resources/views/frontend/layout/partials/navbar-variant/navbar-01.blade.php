@@ -326,11 +326,11 @@ animation: nav-dropdown-animation 0.2s;
         </div>
     </nav> 
   
-   	<div class="wrapper">
+   	<div class="wrapper" style="z-index: 9999; position: relative;">
    	 <nav class="navigation">
     <ul class="nav__list">
             @foreach($categories as $cat)
-      <li class="nav__item"><a class="nav__list" href="https://www.tutrouve.com/listing/category/{{ $cat->slug }}" >
+      <li class="nav__item"><a class="nav__list" href="{{ route('frontend.show.listing.by.category', $cat->slug) }}" >
     <i class="{{ $cat->icon }}" style=" vertical-align:middle; font-size:20px; margin-left:5px;"></i>
     <span style="margin-left:5px;">{{ $cat->name }}</span>
 </a></li>

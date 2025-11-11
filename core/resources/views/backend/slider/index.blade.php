@@ -37,7 +37,7 @@
                 @foreach($sliders as $slider)
                 <tr>
                     <td>
-                        <img src="https://www.tutrouve.com/core/public/sliders/{{ $slider->image }}" alt="Slider Image" class="img-thumbnail" style="width: 100px; height: auto;">
+                        <img src="{{ asset('sliders/' . $slider->image) }}" alt="Slider Image" class="img-thumbnail" style="width: 100px; height: auto;">
                     </td>
                     <td>
                         <a href="{{ $slider->link }}" target="_blank">{{ $slider->link ?? 'Pas de lien' }}</a>

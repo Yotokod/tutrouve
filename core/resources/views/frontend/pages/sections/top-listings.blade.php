@@ -122,16 +122,16 @@
 }
 
 .section-title {
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 800;
     color: #1F3E39;
-    margin: 0 0 12px 0;
+    margin: 0 0 8px 0;
     line-height: 1.2;
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
 }
 
 .section-subtitle {
-    font-size: clamp(1rem, 2vw, 1.125rem);
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
     color: #666666;
     margin: 0;
     line-height: 1.6;
@@ -236,15 +236,15 @@
 /* Listing Card */
 .listing-card {
     background: #ffffff;
-    border-radius: 20px;
+    border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     border: 1px solid #f0f0f0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    min-width: 320px;
-    max-width: 320px;
+    min-width: 260px;
+    max-width: 260px;
     flex-shrink: 0;
 }
 
@@ -258,7 +258,7 @@
 .listing-image-wrapper {
     position: relative;
     overflow: hidden;
-    height: 240px;
+    height: 180px;
     background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
 }
 
@@ -297,20 +297,25 @@
 /* Featured Badge */
 .listing-badge {
     position: absolute;
-    top: 16px;
-    left: 16px;
+    top: 12px;
+    left: 12px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 14px;
+    gap: 4px;
+    padding: 6px 10px;
     background: linear-gradient(135deg, #FFB800 0%, #FF8C00 100%);
     color: #ffffff;
     border-radius: 50px;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
     box-shadow: 0 4px 12px rgba(255, 184, 0, 0.4);
     z-index: 3;
     animation: pulse-badge 2s ease-in-out infinite;
+}
+
+.listing-badge svg {
+    width: 10px;
+    height: 10px;
 }
 
 @keyframes pulse-badge {
@@ -327,12 +332,16 @@
 /* Favorite Button */
 .listing-favorite {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 12px;
+    right: 12px;
     z-index: 3;
     opacity: 0;
     transform: scale(0.8);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.listing-favorite > * {
+    transform: scale(0.85);
 }
 
 .listing-card:hover .listing-favorite {
@@ -343,14 +352,14 @@
 /* Price Badge */
 .listing-price-badge {
     position: absolute;
-    bottom: 16px;
-    left: 16px;
-    padding: 10px 18px;
+    bottom: 12px;
+    left: 12px;
+    padding: 8px 14px;
     background: rgba(31, 62, 57, 0.95);
     backdrop-filter: blur(10px);
     color: #ffffff;
-    border-radius: 12px;
-    font-size: 1.25rem;
+    border-radius: 10px;
+    font-size: 1rem;
     font-weight: 800;
     box-shadow: 0 4px 16px rgba(31, 62, 57, 0.3);
     z-index: 3;
@@ -359,20 +368,20 @@
 
 /* Card Content */
 .listing-content {
-    padding: 24px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     flex: 1;
-    gap: 16px;
+    gap: 12px;
 }
 
 /* Title */
 .listing-title {
     margin: 0;
-    font-size: 1.125rem;
+    font-size: 0.95rem;
     font-weight: 700;
     line-height: 1.4;
-    min-height: 48px;
+    min-height: 42px;
 }
 
 .listing-title a {
@@ -393,8 +402,8 @@
 .listing-meta {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 0.875rem;
+    gap: 6px;
+    font-size: 0.8rem;
     color: #666666;
 }
 
@@ -402,12 +411,12 @@
 .listing-date {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
 }
 
 .listing-location i,
 .listing-date i {
-    font-size: 16px;
+    font-size: 14px;
     color: #1F3E39;
 }
 
@@ -416,14 +425,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 12px 20px;
+    gap: 6px;
+    padding: 10px 16px;
     background: linear-gradient(135deg, rgba(31, 62, 57, 0.05) 0%, rgba(31, 62, 57, 0.1) 100%);
     color: #1F3E39;
     border: 2px solid rgba(31, 62, 57, 0.2);
-    border-radius: 12px;
+    border-radius: 10px;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     margin-top: auto;
@@ -490,12 +499,12 @@
     }
     
     .listing-card {
-        min-width: 280px;
-        max-width: 280px;
+        min-width: 240px;
+        max-width: 240px;
     }
     
     .listing-image-wrapper {
-        height: 220px;
+        height: 170px;
     }
 }
 
@@ -530,17 +539,17 @@
     }
     
     .listing-card {
-        min-width: 260px;
-        max-width: 260px;
+        min-width: 220px;
+        max-width: 220px;
     }
     
     .listing-content {
-        padding: 20px;
-        gap: 14px;
+        padding: 14px;
+        gap: 10px;
     }
     
     .listing-image-wrapper {
-        height: 200px;
+        height: 160px;
     }
 }
 
@@ -564,27 +573,27 @@
     }
     
     .listing-card {
-        min-width: 240px;
-        max-width: 240px;
-        border-radius: 16px;
+        min-width: 200px;
+        max-width: 200px;
+        border-radius: 14px;
     }
     
     .listing-image-wrapper {
-        height: 180px;
+        height: 150px;
     }
     
     .listing-content {
-        padding: 18px;
+        padding: 12px;
     }
     
     .listing-title {
-        font-size: 1rem;
+        font-size: 0.875rem;
         min-height: auto;
     }
     
     .listing-price-badge {
-        font-size: 1.125rem;
-        padding: 8px 14px;
+        font-size: 0.9rem;
+        padding: 6px 10px;
     }
     
     .no-listings {
@@ -605,10 +614,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const prevBtn = document.querySelector('.carousel-prev');
     const nextBtn = document.querySelector('.carousel-next');
+    const carouselWrapper = document.querySelector('.listings-carousel-wrapper');
     
     if (!prevBtn || !nextBtn) return;
     
-    const scrollAmount = 340; // Card width (320px) + gap (24px) - 4px
+    const scrollAmount = 284; // Card width (260px) + gap (24px)
+    let autoplayInterval;
+    let isUserInteracting = false;
     
     function updateButtons() {
         const maxScroll = carousel.scrollWidth - carousel.clientWidth;
@@ -616,20 +628,95 @@ document.addEventListener('DOMContentLoaded', function() {
         nextBtn.disabled = carousel.scrollLeft >= maxScroll - 1;
     }
     
+    function scrollNext() {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        
+        // Si on est à la fin, revenir au début
+        if (carousel.scrollLeft >= maxScroll - 1) {
+            carousel.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            carousel.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+        
+        setTimeout(updateButtons, 400);
+    }
+    
+    function startAutoplay() {
+        // Ne démarrer l'autoplay que s'il y a assez de contenu pour scroller
+        const hasScrollableContent = carousel.scrollWidth > carousel.clientWidth;
+        
+        if (hasScrollableContent && !isUserInteracting) {
+            autoplayInterval = setInterval(scrollNext, 3000);
+        }
+    }
+    
+    function stopAutoplay() {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+        }
+    }
+    
+    // Navigation manuelle
     prevBtn.addEventListener('click', () => {
+        stopAutoplay();
+        isUserInteracting = true;
+        
         carousel.scrollBy({
             left: -scrollAmount,
             behavior: 'smooth'
         });
-        setTimeout(updateButtons, 400);
+        
+        setTimeout(() => {
+            updateButtons();
+            isUserInteracting = false;
+            startAutoplay();
+        }, 400);
     });
     
     nextBtn.addEventListener('click', () => {
-        carousel.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
+        stopAutoplay();
+        isUserInteracting = true;
+        
+        scrollNext();
+        
+        setTimeout(() => {
+            isUserInteracting = false;
+            startAutoplay();
+        }, 400);
+    });
+    
+    // Pause au survol du carrousel
+    if (carouselWrapper) {
+        carouselWrapper.addEventListener('mouseenter', () => {
+            stopAutoplay();
         });
-        setTimeout(updateButtons, 400);
+        
+        carouselWrapper.addEventListener('mouseleave', () => {
+            if (!isUserInteracting) {
+                startAutoplay();
+            }
+        });
+    }
+    
+    // Pause au focus/interaction avec une card
+    const listingCards = carousel.querySelectorAll('.listing-card');
+    listingCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            stopAutoplay();
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            if (!isUserInteracting && !carouselWrapper.matches(':hover')) {
+                startAutoplay();
+            }
+        });
     });
     
     carousel.addEventListener('scroll', updateButtons);
@@ -638,6 +725,16 @@ document.addEventListener('DOMContentLoaded', function() {
     updateButtons();
     
     // Update on window resize
-    window.addEventListener('resize', updateButtons);
+    window.addEventListener('resize', () => {
+        updateButtons();
+        stopAutoplay();
+        startAutoplay();
+    });
+    
+    // Démarrer l'autoplay
+    startAutoplay();
+    
+    // Cleanup
+    window.addEventListener('beforeunload', stopAutoplay);
 });
 </script>

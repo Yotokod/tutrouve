@@ -229,6 +229,12 @@
     align-items: center;
     flex: 1;
     min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+.form-group:hover {
+    background: rgba(31, 62, 57, 0.02);
+    border-radius: 50px;
 }
 
 .category-group {
@@ -278,10 +284,26 @@
 select.form-control {
     cursor: pointer;
     appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%2395A5A6' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 40px;
+    border: none;
+    outline: none;
+}
+
+select.form-control:focus {
+    outline: none;
+    border: none;
+}
+
+/* Style pour les options du select */
+select.form-control option {
+    padding: 10px;
+    background: #ffffff;
+    color: #2C3E50;
 }
 
 /* Divider */

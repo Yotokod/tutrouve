@@ -3,6 +3,7 @@
     {{__('Dashboard')}}
 @endsection
 @section('style')
+    <link rel="stylesheet" href="{{ asset('css/admin-dashboard-modern.css') }}">
     <style>
         .order_id img{
             width: 50px !important;
@@ -13,7 +14,7 @@
     </style>
 @endsection
 @section('content')
-    <div class="dashboard__body posPadding">
+    <div class="dashboard__body posPadding modern-admin-dashboard" style="background: linear-gradient(135deg, #f8faf9 0%, #e8f4f3 100%); min-height: 100vh;">
         <div class="dashboard__inner">
             <div class="dashboard__inner__item">
                 <div class="dashboard__inner__item__flex">
@@ -272,6 +273,7 @@
             }
         });
     </script>
+    <script src="{{ asset('js/admin-dashboard-modern.js') }}"></script>
     @include('backend.pages.dashboard.line-graph-js')
     @if($visitors->count() > 0)
        @include('backend.pages.dashboard.visitors-by-country-js')
