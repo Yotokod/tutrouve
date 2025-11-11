@@ -388,6 +388,12 @@
     <!-- Filtered Listings Section -->
     @include('frontend.pages.sections.filtered-listings')
 
+    <!-- Diversity Section - Showcase variety of listings -->
+    @include('frontend.pages.sections.diversity')
+
+    <!-- Services Highlight Section -->
+    @include('frontend.pages.sections.services-highlight')
+
     <!-- Call To Action Section avec statistiques -->
     @include('frontend.pages.sections.cta')
 </div>
@@ -441,7 +447,7 @@
     }, observerOptions);
 
     // Observe all sections
-    document.querySelectorAll('.top-listings-section, .browse-categories-section, .recent-listings-section, .cta-section').forEach(section => {
+    document.querySelectorAll('.top-listings-section, .browse-categories-section, .recent-listings-section, .diversity-section, .cta-section').forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(30px)';
         section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';

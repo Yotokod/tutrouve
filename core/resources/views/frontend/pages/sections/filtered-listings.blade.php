@@ -1,18 +1,6 @@
 <!-- Filtered Listings Section with Sidebar -->
 <div class="filtered-listings-section">
     <div class="container-1440">
-        <!-- Section Header -->
-        <div class="section-header-filtered">
-            <div class="section-title-wrapper">
-                <h2 class="section-title">
-                    {{ __('Annonces récentes') }}
-                </h2>
-                <p class="section-subtitle">
-                    {{ __('Parcourez les dernières annonces avec nos filtres') }}
-                </p>
-            </div>
-        </div>
-
         <div class="filtered-content-wrapper">
             <!-- Sidebar Filters -->
             <aside class="filters-sidebar">
