@@ -17,9 +17,16 @@
             </a>
         </div>
 
-        <!-- Listings Grid with Modern Card Design -->
-        <div class="listings-grid">
-            @forelse($topListings ?? [] as $listing)
+        <!-- Listings Carousel with Modern Card Design -->
+        <div class="listings-carousel-wrapper">
+            <button class="carousel-nav carousel-prev" aria-label="Previous">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M15 18l-6-6 6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <div class="listings-carousel" id="topListingsCarousel">
+                @forelse($topListings ?? [] as $listing)
                 <div class="listing-card">
                     <!-- Image Container -->
                     <div class="listing-image-wrapper">
@@ -85,6 +92,13 @@
                     <p>{{ __('Aucune annonce disponible pour le moment') }}</p>
                 </div>
             @endforelse
+            </div>
+            
+            <button class="carousel-nav carousel-next" aria-label="Next">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M9 18l6-6-6-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
         </div>
     </div>
 </div>
@@ -155,11 +169,68 @@
     transform: translateX(4px);
 }
 
-/* Listings Grid */
-.listings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 28px;
+/* Listings Carousel Wrapper */
+.listings-carousel-wrapper {
+    position: relative;
+    padding: 0 60px;
+}
+
+/* Carousel Navigation Buttons */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(31, 62, 57, 0.9);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-prev {
+    left: 0;
+}
+
+.carousel-next {
+    right: 0;
+}
+
+.carousel-nav:hover {
+    background: rgba(31, 62, 57, 1);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 20px rgba(31, 62, 57, 0.4);
+}
+
+.carousel-nav:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Listings Carousel */
+.listings-carousel {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.listings-carousel::-webkit-scrollbar {
+    display: none;
 }
 
 /* Listing Card */
@@ -172,7 +243,9 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-width: 320px;
+    max-width: 320px;
+    flex-shrink: 0;
 }
 
 .listing-card:hover {
@@ -407,9 +480,18 @@
         margin-bottom: 40px;
     }
     
-    .listings-grid {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 24px;
+    .listings-carousel-wrapper {
+        padding: 0 50px;
+    }
+    
+    .carousel-nav {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .listing-card {
+        min-width: 280px;
+        max-width: 280px;
     }
     
     .listing-image-wrapper {
@@ -433,9 +515,23 @@
         justify-content: center;
     }
     
-    .listings-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 20px;
+    .listings-carousel-wrapper {
+        padding: 0 40px;
+    }
+    
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-nav svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .listing-card {
+        min-width: 260px;
+        max-width: 260px;
     }
     
     .listing-content {
@@ -453,12 +549,23 @@
         padding: 50px 0;
     }
     
-    .listings-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+    .listings-carousel-wrapper {
+        padding: 0 35px;
+    }
+    
+    .carousel-nav {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .carousel-nav svg {
+        width: 18px;
+        height: 18px;
     }
     
     .listing-card {
+        min-width: 240px;
+        max-width: 240px;
         border-radius: 16px;
     }
     
@@ -482,6 +589,7 @@
     
     .no-listings {
         padding: 60px 20px;
+        min-width: 100%;
     }
     
     .no-listings i {
@@ -489,3 +597,47 @@
     }
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('topListingsCarousel');
+    if (!carousel) return;
+    
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    
+    if (!prevBtn || !nextBtn) return;
+    
+    const scrollAmount = 340; // Card width (320px) + gap (24px) - 4px
+    
+    function updateButtons() {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        prevBtn.disabled = carousel.scrollLeft <= 0;
+        nextBtn.disabled = carousel.scrollLeft >= maxScroll - 1;
+    }
+    
+    prevBtn.addEventListener('click', () => {
+        carousel.scrollBy({
+            left: -scrollAmount,
+            behavior: 'smooth'
+        });
+        setTimeout(updateButtons, 400);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+        setTimeout(updateButtons, 400);
+    });
+    
+    carousel.addEventListener('scroll', updateButtons);
+    
+    // Initial button state
+    updateButtons();
+    
+    // Update on window resize
+    window.addEventListener('resize', updateButtons);
+});
+</script>

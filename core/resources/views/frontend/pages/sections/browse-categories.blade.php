@@ -24,9 +24,7 @@
                         <!-- Category Icon -->
                         <div class="category-icon-wrapper">
                             @if(!empty($category->icon))
-                                <div class="category-icon">
-                                    {!! $category->icon !!}
-                                </div>
+                                <i class="{{ $category->icon }} category-icon"></i>
                             @else
                                 <i class="las la-folder category-icon"></i>
                             @endif
