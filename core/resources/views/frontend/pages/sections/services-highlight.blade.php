@@ -29,7 +29,7 @@
     }
 @endphp
 
-<section class="services-highlight-section" style="padding: 80px 0; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);">
+<section class="services-highlight-section" style="padding: 80px 0; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding-top: 80px; padding-bottom: 80px;">
     <div class="container-1440">
         <div class="services-highlight-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
             
@@ -67,11 +67,9 @@
             <div class="services-content-section">
                 <div style="max-width: 540px;">
                     <!-- Title -->
-                    <h2 style="font-size: 48px; font-weight: 800; color: #1e293b; line-height: 1.2; margin-bottom: 24px;">
-                        {{ __('Où les Sourires Deviennent') }}
-                        <span style="display: block; background: linear-gradient(135deg, #1F3E39 0%, #2d5850 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                            {{ __('Des Opportunités') }}
-                        </span>
+                    <h2 style="font-size: 32px; font-weight: 800; color: #1e293b; line-height: 1.2; margin-bottom: 24px;">
+                        {{ __('Où les Sourires Deviennent des Opportunités') }}
+                        
                     </h2>
 
                     <!-- Description -->
