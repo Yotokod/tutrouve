@@ -1166,10 +1166,10 @@
                                                 <div class="stat-item">
                                                     <i class="las la-clipboard-list"></i>
                                                     <span>
-                                                        @if($userTotalListings > 1)
-                                                            {{ $userTotalListings }} {{ __('annonces') }}
+                                                        @if($user_total_listings > 1)
+                                                            {{ $user_total_listings }} {{ __('annonces') }}
                                                         @else
-                                                            {{ $userTotalListings }} {{ __('annonce') }}
+                                                            {{ $user_total_listings }} {{ __('annonce') }}
                                                         @endif
                                                     </span>
                                                 </div>

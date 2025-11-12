@@ -32,42 +32,25 @@
         @endphp
 
         <!-- Diverse Listings Grid with Floating Images -->
-        <div class="diverse-listings-grid" style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; padding: 40px 0;">
+        <div class="diverse-mosaic-grid" style="position: relative; width: 100%; max-width: 950px; margin: 0 auto; min-height: 340px; height: 420px;">
             @foreach($diverseListings as $index => $listing)
-                <div class="diverse-item" 
-                     style="position: relative; 
-                            animation: floatImage {{ 3 + ($index % 3) }}s ease-in-out infinite; 
-                            animation-delay: {{ $index * 0.2 }}s;">
-                    <a href="{{ route('frontend.listing.details', $listing->slug ?? 'x') }}" 
-                       style="display: block; text-decoration: none;">
-                        <div class="diverse-image-wrapper" 
-                             style="position: relative; 
-                                    border-radius: 20px; 
-                                    overflow: hidden; 
-                                    aspect-ratio: 1;
-                                    box-shadow: 0 10px 30px rgba(31, 62, 57, 0.15);
-                                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                                    background: white;">
-                            
-                            <!-- Image -->
+                @php
+                    // Définir des positions et tailles personnalisées pour chaque image (12 max)
+                    $positions = [
+                        [30, 0, 110], [180, 0, 110], [330, 0, 110],
+                        [0, 90, 110], [120, 90, 110], [240, 90, 110], [360, 90, 110],
+                        [60, 180, 110], [210, 180, 110], [360, 180, 110],
+                        [150, 270, 110], [300, 270, 110],
+                    ];
+                    $left = $positions[$index][0] ?? rand(0, 400);
+                    $top = $positions[$index][1] ?? rand(0, 300);
+                    $size = $positions[$index][2] ?? 110;
+                @endphp
+                <div class="diverse-mosaic-item" style="position: absolute; left: {{ $left }}px; top: {{ $top }}px; width: {{ $size }}px; height: {{ $size }}px; z-index: 2; animation: floatImage {{ 3 + ($index % 3) }}s ease-in-out infinite; animation-delay: {{ $index * 0.2 }}s;">
+                    <a href="{{ route('frontend.listing.details', $listing->slug ?? 'x') }}" style="display: block; text-decoration: none; width: 100%; height: 100%;">
+                        <div class="diverse-image-wrapper" style="position: relative; border-radius: 20px; overflow: hidden; width: 100%; height: 100%; box-shadow: 0 10px 30px rgba(31, 62, 57, 0.15); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); background: white;">
                             {!! render_image_markup_by_attachment_id($listing->image, '', 'grid') !!}
-                            
-                            <!-- Overlay on Hover -->
-                            <div class="diverse-overlay" 
-                                 style="position: absolute; 
-                                        top: 0; 
-                                        left: 0; 
-                                        right: 0; 
-                                        bottom: 0; 
-                                        background: linear-gradient(135deg, rgba(31, 62, 57, 0.85), rgba(45, 88, 80, 0.75)); 
-                                        opacity: 0; 
-                                        transition: opacity 0.3s ease; 
-                                        display: flex; 
-                                        flex-direction: column;
-                                        align-items: center; 
-                                        justify-content: center; 
-                                        padding: 16px;
-                                        text-align: center;">
+                            <div class="diverse-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(31, 62, 57, 0.85), rgba(45, 88, 80, 0.75)); opacity: 0; transition: opacity 0.3s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; text-align: center;">
                                 <div style="color: white; font-weight: 600; font-size: 14px; margin-bottom: 8px; line-height: 1.3;">
                                     {{ Str::limit($listing->title, 40) }}
                                 </div>
@@ -158,66 +141,36 @@
         transform: scale(1.1);
     }
 
-    /* Responsive Grid */
+
+    /* Responsive Mosaic */
     @media (max-width: 1024px) {
-        .diverse-listings-grid {
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
-            gap: 20px !important;
+        .diverse-mosaic-grid {
+            height: 320px !important;
+        }
+        .diverse-mosaic-item {
+            width: 80px !important;
+            height: 80px !important;
         }
     }
-
     @media (max-width: 768px) {
         .diversity-section {
-            padding: 60px 0 !important;
+            padding: 40px 0 !important;
         }
-
-        .diverse-listings-grid {
-            grid-template-columns: repeat(3, 1fr) !important;
-            gap: 16px !important;
-            padding: 30px 0 !important;
+        .diverse-mosaic-grid {
+            height: 220px !important;
         }
-
-        .diverse-image-wrapper {
-            border-radius: 16px !important;
-        }
-
-        .diverse-overlay {
-            padding: 12px !important;
-        }
-
-        .diverse-overlay div:first-child {
-            font-size: 12px !important;
-            margin-bottom: 6px !important;
-        }
-
-        .diverse-overlay div:nth-child(2) {
-            font-size: 14px !important;
-        }
-
-        .diverse-overlay div:nth-child(3) {
-            margin-top: 8px !important;
-            padding: 4px 10px !important;
-            font-size: 10px !important;
-        }
-
-        .btn-explore-diversity {
-            padding: 14px 28px !important;
-            font-size: 15px !important;
+        .diverse-mosaic-item {
+            width: 60px !important;
+            height: 60px !important;
         }
     }
-
     @media (max-width: 576px) {
-        .diverse-listings-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 12px !important;
+        .diverse-mosaic-grid {
+            height: 120px !important;
         }
-
-        .diversity-section h2 {
-            font-size: 28px !important;
-        }
-
-        .diversity-section p {
-            font-size: 16px !important;
+        .diverse-mosaic-item {
+            width: 40px !important;
+            height: 40px !important;
         }
     }
 
