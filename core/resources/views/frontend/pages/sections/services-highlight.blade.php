@@ -36,24 +36,20 @@
             <!-- Left: Image Section -->
             <div class="services-image-section" style="position: relative;">
                 <div class="main-service-image" style="position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(31, 62, 57, 0.15); height: 650px; min-height: 480px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e8f5e9 0%, #f1f5f9 100%);">
-                    <!-- Illustration SVG moderne -->
-                    <svg width="420" height="600" viewBox="0 0 420 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="30" y="60" width="360" height="480" rx="48" fill="#F8FAFC"/>
-                        <rect x="60" y="100" width="300" height="180" rx="24" fill="#D1FAE5"/>
-                        <rect x="80" y="320" width="120" height="80" rx="16" fill="#B9F6CA"/>
-                        <rect x="220" y="320" width="120" height="80" rx="16" fill="#A7FFEB"/>
-                        <circle cx="120" cy="220" r="24" fill="#1F3E39"/>
-                        <circle cx="300" cy="180" r="18" fill="#2d5850"/>
-                        <rect x="140" y="420" width="140" height="32" rx="16" fill="#1F3E39"/>
-                        <rect x="160" y="470" width="100" height="18" rx="9" fill="#64748B"/>
-                        <text x="210" y="210" text-anchor="middle" fill="#1F3E39" font-size="32" font-weight="bold" font-family="Arial">Services</text>
-                        <text x="210" y="250" text-anchor="middle" fill="#64748B" font-size="18" font-family="Arial">Professionnels</text>
-                        <text x="210" y="490" text-anchor="middle" fill="#fff" font-size="18" font-family="Arial">Tutrouve</text>
-                    </svg>
-                    <!-- Badge flottant -->
+                    <img src="{{ asset('2149095914.jpg') }}" alt="Services" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                    <!-- Badge flottant (ancienne version) -->
                     <div style="position: absolute; bottom: 24px; left: 24px; background: white; padding: 16px 24px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 12px;">
-                        <div style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #1F3E39 0%, #2d5850 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 12px; border: 3px solid white; margin-right: 8px;">
-                            {{ \App\Models\Backend\Listing::where('status', 1)->where('is_published', 1)->count() }}+
+                        <div style="display: flex; align-items: center; margin-right: 8px;">
+                            @if($serviceListings->count() >= 3)
+                                @foreach($serviceListings->take(3) as $index => $listing)
+                                    <div style="width: 36px; height: 36px; border-radius: 50%; overflow: hidden; border: 3px solid white; margin-left: {{ $index > 0 ? '-12px' : '0' }}; position: relative; z-index: {{ 3 - $index }};">
+                                        {!! render_image_markup_by_attachment_id($listing->image, '', 'thumb') !!}
+                                    </div>
+                                @endforeach
+                            @endif
+                            <div style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #1F3E39 0%, #2d5850 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 12px; border: 3px solid white; margin-left: -12px; position: relative; z-index: 0;">
+                                {{ \App\Models\Backend\Listing::where('status', 1)->where('is_published', 1)->count() }}+
+                            </div>
                         </div>
                         <div>
                             <div style="font-size: 14px; font-weight: 700; color: #1e293b; line-height: 1.2;">
