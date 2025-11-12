@@ -36,7 +36,7 @@
             <!-- Left: Image Section -->
             <div class="services-image-section" style="position: relative;">
                 <div class="main-service-image" style="position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(31, 62, 57, 0.15); height: 650px; min-height: 480px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e8f5e9 0%, #f1f5f9 100%);">
-                    <img src="{{ asset('2149095914.jpg') }}" alt="Services" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                    <img src="https://tutrouve.com/core/public/2149095914.jpg" alt="Services" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
                     <!-- Badge flottant (ancienne version) -->
                     <div style="position: absolute; bottom: 24px; left: 24px; background: white; padding: 16px 24px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 12px;">
                         <div style="display: flex; align-items: center; margin-right: 8px;">
