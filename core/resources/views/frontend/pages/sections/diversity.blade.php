@@ -1,12 +1,12 @@
 <!-- Diversity Section - Two Column Layout with Carousel -->
-<div class="diversity-section" style="background: #9ECFD4; position: relative; overflow: hidden;">
+<div class="diversity-section" style="background: linear-gradient(135deg, #f0f7f0 0%, #e8f4e9 100%); position: relative; overflow: hidden;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 60px 20px;">
         
         <!-- Two Column Layout -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1;">
+    <div style="display: grid; grid-template-columns: 1fr 3fr; gap: 60px; align-items: center; position: relative; z-index: 1;">
             
             <!-- Left Column - Content -->
-            <div style="padding-right: 40px;">
+            <div>
                 
                 <!-- Section Header Badge -->
                 <div style="display: inline-block; padding: 8px 20px; background: rgba(255, 255, 255, 0.3); border-radius: 50px; margin-bottom: 24px;">
@@ -221,6 +221,65 @@
                     @endforeach
                     <!-- Duplicate for seamless loop -->
                     @foreach($diverseListings->slice(8, 4) as $listing)
+                        <div class="carousel-image-item">
+                            <a href="{{ route('frontend.listing.details', $listing->slug ?? 'x') }}" 
+                               style="display: block; text-decoration: none; width: 100%; height: 100%;">
+                                <div class="carousel-image-wrapper" 
+                                     style="position: relative; 
+                                            overflow: hidden; 
+                                            width: 100%; 
+                                            height: 200px;
+                                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+                                            background: #f0f0f0;">
+                                    {!! render_image_markup_by_attachment_id($listing->image, '', 'grid') !!}
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Column 4 - Scroll Up (images supplémentaires) -->
+                <div class="scroll-column scroll-up" style="flex: 1; display: flex; flex-direction: column; gap: 12px; margin-top: -80px;">
+                    @foreach($diverseListings->slice(0, 4) as $listing)
+                        <div class="carousel-image-item">
+                            <a href="{{ route('frontend.listing.details', $listing->slug ?? 'x') }}" 
+                               style="display: block; text-decoration: none; width: 100%; height: 100%;">
+                                <div class="carousel-image-wrapper" 
+                                     style="position: relative; 
+                                            overflow: hidden; 
+                                            width: 100%; 
+                                            height: 200px;
+                                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+                                            background: #f0f0f0;">
+                                    {!! render_image_markup_by_attachment_id($listing->image, '', 'grid') !!}
+                                    <div class="carousel-overlay" 
+                                         style="position: absolute; 
+                                                top: 0; 
+                                                left: 0; 
+                                                right: 0; 
+                                                bottom: 0; 
+                                                background: linear-gradient(135deg, rgba(31, 62, 57, 0.9), rgba(45, 88, 80, 0.85)); 
+                                                opacity: 0; 
+                                                transition: opacity 0.3s ease; 
+                                                display: flex; 
+                                                flex-direction: column; 
+                                                align-items: center; 
+                                                justify-content: center; 
+                                                padding: 12px; 
+                                                text-align: center;">
+                                        <div style="color: white; font-weight: 600; font-size: 12px; margin-bottom: 4px; line-height: 1.3;">
+                                            {{ Str::limit($listing->title, 30) }}
+                                        </div>
+                                        <div style="color: rgba(255, 255, 255, 0.95); font-size: 14px; font-weight: 700;">
+                                            {{ amount_with_currency_symbol($listing->price) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                    <!-- Duplicate for seamless loop -->
+                    @foreach($diverseListings->slice(0, 4) as $listing)
                         <div class="carousel-image-item">
                             <a href="{{ route('frontend.listing.details', $listing->slug ?? 'x') }}" 
                                style="display: block; text-decoration: none; width: 100%; height: 100%;">
