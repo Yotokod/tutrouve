@@ -89,7 +89,7 @@
                     </p>
 
                     <!-- CTA Button -->
-                    <a href="{{ route('frontend.listings') }}" style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 32px; background: linear-gradient(135deg, #1F3E39 0%, #2d5850 100%); color: white; border-radius: 16px; font-weight: 600; font-size: 16px; text-decoration: none; box-shadow: 0 8px 24px rgba(31, 62, 57, 0.3); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);" 
+                    <a href="{{ route('frontend.home.search') }}" style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 32px; background: linear-gradient(135deg, #1F3E39 0%, #2d5850 100%); color: white; border-radius: 16px; font-weight: 600; font-size: 16px; text-decoration: none; box-shadow: 0 8px 24px rgba(31, 62, 57, 0.3); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);" 
                        onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 36px rgba(31, 62, 57, 0.4)';"
                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(31, 62, 57, 0.3)';">
                         {{ __('Explorer Plus') }}
