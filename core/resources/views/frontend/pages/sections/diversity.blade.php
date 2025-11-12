@@ -1,10 +1,6 @@
 <!-- Diversity Section - Two Column Layout -->
-<div class="diversity-section" style="padding: 100px 0; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); position: relative; overflow: hidden;">
+<div class="diversity-section" style="padding: 100px 0; background: #9ECFD4; position: relative; overflow: hidden;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-        
-        <!-- Background Decorative Elements -->
-        <div style="position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: linear-gradient(135deg, rgba(31, 62, 57, 0.05), rgba(45, 88, 80, 0.03)); border-radius: 50%; filter: blur(60px); z-index: 0;"></div>
-        <div style="position: absolute; bottom: -80px; left: -80px; width: 400px; height: 400px; background: linear-gradient(135deg, rgba(31, 62, 57, 0.03), rgba(45, 88, 80, 0.05)); border-radius: 50%; filter: blur(80px); z-index: 0;"></div>
         
         <!-- Two Column Layout -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1;">
@@ -13,8 +9,8 @@
             <div style="padding-right: 40px;">
                 
                 <!-- Section Header Badge -->
-                <div style="display: inline-block; padding: 8px 20px; background: linear-gradient(135deg, rgba(31, 62, 57, 0.1), rgba(45, 88, 80, 0.1)); border-radius: 50px; margin-bottom: 24px;">
-                    <span style="font-size: 13px; font-weight: 600; background: linear-gradient(135deg, #1F3E39 0%, #2d5850 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: 1.5px;">
+                <div style="display: inline-block; padding: 8px 20px; background: rgba(255, 255, 255, 0.3); border-radius: 50px; margin-bottom: 24px;">
+                    <span style="font-size: 13px; font-weight: 600; color: #1F3E39; letter-spacing: 1.5px;">
                         {{ __('DIVERSITÉ') }}
                     </span>
                 </div>
@@ -25,7 +21,7 @@
                 </h2>
                 
                 <!-- Subtitle -->
-                <p style="font-size: 18px; color: #64748B; margin: 0 0 40px; line-height: 1.7;">
+                <p style="font-size: 18px; color: #334155; margin: 0 0 40px; line-height: 1.7;">
                     {{ __('De l\'électronique aux services, explorez la richesse et la variété des offres disponibles sur Tutrouve.') }}
                 </p>
 
@@ -36,13 +32,13 @@
                           align-items: center; 
                           gap: 12px; 
                           padding: 16px 36px; 
-                          background: linear-gradient(135deg, #1F3E39 0%, #2d5850 100%); 
+                          background: #1F3E39; 
                           color: white; 
                           border-radius: 50px; 
                           font-size: 16px; 
                           font-weight: 600; 
                           text-decoration: none; 
-                          box-shadow: 0 8px 24px rgba(31, 62, 57, 0.3); 
+                          box-shadow: 0 4px 12px rgba(31, 62, 57, 0.25); 
                           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
                     {{ __('Explorer toutes les annonces') }}
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s ease;">
@@ -63,7 +59,7 @@
             @endphp
 
             <!-- Right Column - Images Grid -->
-            <div class="images-grid-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; position: relative;">
+            <div class="images-grid-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; position: relative; height: 100%; min-height: 600px;">
                 
                 @foreach($diverseListings as $index => $listing)
                     <div class="grid-image-item" 
@@ -74,13 +70,11 @@
                            style="display: block; text-decoration: none; width: 100%; height: 100%;">
                             <div class="grid-image-wrapper" 
                                  style="position: relative; 
-                                        border-radius: 16px; 
                                         overflow: hidden; 
                                         width: 100%; 
-                                        height: 160px;
-                                        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); 
+                                        height: 100%;
                                         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-                                        background: white;">
+                                        background: #f0f0f0;">
                                 {!! render_image_markup_by_attachment_id($listing->image, '', 'grid') !!}
                                 <div class="grid-overlay" 
                                      style="position: absolute; 
@@ -119,6 +113,11 @@
 </div>
 
 <style>
+    /* Make grid fill entire height */
+    .images-grid-container {
+        grid-auto-rows: 1fr;
+    }
+
     /* Fade in animation */
     @keyframes fadeInUp {
         from {
@@ -133,8 +132,7 @@
 
     /* Hover Effects */
     .grid-image-wrapper:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 30px rgba(31, 62, 57, 0.18) !important;
+        transform: scale(1.02);
     }
 
     .grid-image-wrapper:hover .grid-overlay {
@@ -143,7 +141,7 @@
 
     .btn-explore-diversity:hover {
         transform: translateY(-2px);
-        box-shadow: 0 12px 32px rgba(31, 62, 57, 0.4);
+        box-shadow: 0 8px 20px rgba(31, 62, 57, 0.35);
     }
 
     .btn-explore-diversity:hover svg {
@@ -159,7 +157,7 @@
     }
 
     .grid-image-wrapper:hover img {
-        transform: scale(1.08);
+        transform: scale(1.05);
     }
 
     /* Loading skeleton */
@@ -170,7 +168,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background: linear-gradient(90deg, #e0e0e0 25%, #d0d0d0 50%, #e0e0e0 75%);
         background-size: 200% 100%;
         animation: loading 1.5s infinite;
         z-index: -1;
@@ -190,6 +188,7 @@
         
         .images-grid-container {
             grid-template-columns: repeat(4, 1fr) !important;
+            min-height: 400px !important;
         }
     }
 
@@ -200,20 +199,14 @@
         
         .images-grid-container {
             grid-template-columns: repeat(3, 1fr) !important;
-        }
-        
-        .grid-image-wrapper {
-            height: 120px !important;
+            min-height: 350px !important;
         }
     }
 
     @media (max-width: 576px) {
         .images-grid-container {
             grid-template-columns: repeat(2, 1fr) !important;
-        }
-        
-        .grid-image-wrapper {
-            height: 100px !important;
+            min-height: 300px !important;
         }
     }
 
